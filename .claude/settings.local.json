@@ -6,7 +6,13 @@
       "Bash(npm run *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)",
       "mcp__Claude_Preview__preview_start",
-      "Bash(npx vite *)"
+      "Bash(npx vite *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'fix: use vite build directly to avoid tsc permission error on Vercel Linux runner *)",
+      "Bash(git commit -m 'fix: use npx for build to avoid .bin permission error on Vercel; add vercel.json with SPA rewrites *)",
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Bash(git commit -m 'fix: add .gitignore and remove committed node_modules from repo *)"
     ]
   }
 }
