@@ -57,16 +57,24 @@ function Hero() {
   return (
     <section style={{ position: 'relative', height: '95vh', minHeight: 600, overflow: 'hidden' }} aria-label="Hero">
       <img src={images.rooftopSunset} alt="Women in așk hoodies at golden hour, LA rooftop" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
-      {/* dark veil — very subtle, just enough for text */}
+      {/* dark veil */}
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(20,16,12,0.52) 0%, rgba(20,16,12,0.08) 55%, transparent 100%)' }} aria-hidden="true" />
+
+      {/* Oversized watermark — editorial logo treatment */}
+      <div
+        style={{ position: 'absolute', bottom: -48, right: -16, fontFamily: C.heading, fontSize: 'clamp(9rem, 24vw, 22rem)', fontStyle: 'italic', fontWeight: 500, color: 'rgba(255,255,255,0.055)', letterSpacing: '0.08em', lineHeight: 1, userSelect: 'none', pointerEvents: 'none', overflow: 'hidden' }}
+        aria-hidden="true"
+      >
+        așk
+      </div>
 
       {/* Bottom-left editorial text block */}
       <div style={{ position: 'absolute', bottom: 56, left: 40, maxWidth: 540 }} className="animate-fade-up">
         <p style={{ fontFamily: C.body, fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,248,240,0.65)', marginBottom: 18 }}>
-          Summer Collection — 001
+          Drop 01 — Malibu Morning
         </p>
         <h1 style={{ fontFamily: C.heading, fontSize: 'clamp(2.6rem, 6vw, 5.2rem)', fontWeight: 400, fontStyle: 'italic', color: '#F8F5F0', lineHeight: 1.08, margin: 0, marginBottom: 28, letterSpacing: '-0.01em' }}>
-          Soft pieces for<br />sunny routines.
+          late mornings,<br />clean sets,<br />no rush.
         </h1>
         <button
           style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: C.body, fontSize: '0.78rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#F8F5F0', textDecoration: 'underline', textUnderlineOffset: 5, padding: 0, transition: 'opacity 0.2s' }}
@@ -94,7 +102,7 @@ function EditorialIntro() {
             About așk
           </p>
           <p style={{ fontFamily: C.body, fontSize: '0.92rem', color: C.ink, lineHeight: 1.85, opacity: 0.72, marginBottom: 24, maxWidth: 320 }}>
-            Founded by a 15-year-old with an eye for beautiful things. Hoodies, bags and accessories made for the girl who wants to feel put-together without trying too hard.
+            Started at 15 with one standard: nothing makes it in unless it's worth reaching for. Hoodies with real details. Bags you'll actually keep. Accessories that earn their place.
           </p>
           <p style={{ fontFamily: C.body, fontSize: '0.92rem', color: C.ink, lineHeight: 1.85, opacity: 0.72, maxWidth: 320 }}>
             California light, Romanian heart.

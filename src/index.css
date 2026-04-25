@@ -36,9 +36,12 @@
   .delay-3 { animation-delay: 0.3s; }
   .delay-4 { animation-delay: 0.4s; }
 
-  /* Hide scrollbar (lookbook strip) */
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  /* Soft-pulse for live drop indicator (Sporty) */
+  @keyframes liveblip {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.72); }
+  }
+  .live-blip { animation: liveblip 2.2s ease-in-out infinite; }
 }
 
 /* ── Responsive layout utilities ─────────────────────────────────────────────

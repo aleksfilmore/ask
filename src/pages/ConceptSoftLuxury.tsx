@@ -15,7 +15,7 @@ const C = {
   ink: '#111111',
   muted: '#9A9088',
   rule: '#E4DDD6',
-  accent: '#C8B89A',
+  accent: '#9A7B55',
   heading: '"Cormorant Garamond", Georgia, serif',
   body: 'Jost, sans-serif',
 }
@@ -60,15 +60,16 @@ function Hero() {
   return (
     <section style={{ position: 'relative', height: '94vh', minHeight: 560, overflow: 'hidden' }} aria-label="Hero">
       <img src={images.studioSets} alt="Women in earth-tone matching sets, LA studio" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.04) 60%, rgba(255,255,255,0.35) 100%)' }} aria-hidden="true" />
+      {/* Dark scrim — heaviest at bottom where text sits */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(12,9,7,0.72) 0%, rgba(12,9,7,0.28) 40%, rgba(12,9,7,0.06) 70%, transparent 100%)' }} aria-hidden="true" />
 
       {/* Centered minimal text */}
       <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 64, paddingLeft: 24, paddingRight: 24, textAlign: 'center' }}>
-        <p style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', marginBottom: 16, fontWeight: 300 }}>
-          Collection — Summer 2025
+        <p style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 16, fontWeight: 300 }}>
+          Drop 01 — Studio
         </p>
-        <h1 style={{ fontFamily: C.heading, fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 300, color: '#FFFFFF', margin: 0, letterSpacing: '0.04em', lineHeight: 1.15 }}>
-          Everyday pieces with<br />a little sun on them.
+        <h1 style={{ fontFamily: C.heading, fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 300, color: '#FFFFFF', margin: 0, letterSpacing: '0.04em', lineHeight: 1.15, textShadow: '0 1px 24px rgba(0,0,0,0.18)' }}>
+          everything you<br />reach for<br />without thinking.
         </h1>
       </div>
 
@@ -88,13 +89,14 @@ function OpeningStatement() {
       <div style={{ maxWidth: 1400, margin: '0 auto' }} className="intro-2col">
         <div style={{ paddingTop: 8 }}>
           <p style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: C.muted, marginBottom: 20, fontWeight: 300 }}>About</p>
+          <span style={{ fontFamily: C.heading, fontSize: 'clamp(3rem, 6vw, 4.5rem)', fontWeight: 300, color: C.accent, display: 'block', lineHeight: 1, marginBottom: 20, letterSpacing: '0.02em' }}>I.</span>
           <p style={{ fontFamily: C.heading, fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 300, color: C.ink, lineHeight: 1.5, margin: 0, letterSpacing: '0.02em' }}>
-            Started by a 15-year-old who couldn't find pieces soft enough, considered enough, and still worth wearing every day.
+            The outfit you reach for first.<br />Made worth reaching for.
           </p>
         </div>
         <div>
           <p style={{ fontFamily: C.body, fontSize: '0.88rem', color: C.muted, lineHeight: 1.9, margin: 0, fontWeight: 300, paddingTop: 8 }}>
-            așk is a small brand with a simple idea: things you reach for without thinking. Lace-edged hoodies you can wear to the café or the couch. Sequin bags that don't try too hard. Printed pouches that make everyday feel a little more like something.
+            Started at 15 because nothing felt considered enough. așk is the fix: lace-edged hoodies you actually keep, sequin bags that earn their place in every photo, pouches that make the everyday feel like something.
           </p>
           <p style={{ fontFamily: C.body, fontSize: '0.88rem', color: C.muted, lineHeight: 1.9, margin: '20px 0 0', fontWeight: 300 }}>
             California light. Romanian heart. First collection available now.
@@ -162,8 +164,12 @@ function ProductRow({ product, reverse = false }: { product: typeof hoodies[0]; 
 function BrandImage() {
   return (
     <div style={{ height: '65vh', overflow: 'hidden', position: 'relative' }}>
-      <img src={images.laWindow} alt="Three women in muted hoodies, LA studio with palm trees" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
-    </div>
+      <img src={images.laWindow} alt="Three women in muted hoodies, LA studio with palm trees" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />      {/* Oversized logo watermark — editorial label treatment */}
+      <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none' }} aria-hidden="true">
+        <span style={{ fontFamily: C.heading, fontSize: 'clamp(7rem, 20vw, 18rem)', fontStyle: 'italic', fontWeight: 300, color: 'rgba(255,255,255,0.13)', letterSpacing: '0.12em', userSelect: 'none', lineHeight: 1 }}>
+          așk
+        </span>
+      </div>    </div>
   )
 }
 

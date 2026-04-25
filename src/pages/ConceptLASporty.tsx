@@ -63,21 +63,21 @@ function Hero() {
         <img src={images.rooftopPastels} alt="Women in pastel hoodies on LA rooftop" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
         {/* floating tag */}
         <div style={{ position: 'absolute', bottom: 28, left: 24, backgroundColor: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(8px)', borderRadius: 999, padding: '8px 18px', display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ width: 7, height: 7, borderRadius: '50%', backgroundColor: C.blush, display: 'inline-block' }} aria-hidden="true" />
-          <span style={{ fontFamily: C.heading, fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.06em', color: C.ink }}>Summer Drop '25</span>
+          <span className="live-blip" style={{ width: 7, height: 7, borderRadius: '50%', backgroundColor: C.blush, display: 'inline-block' }} aria-hidden="true" />
+          <span style={{ fontFamily: C.heading, fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.06em', color: C.ink }}>Drop 02 — Peach Club</span>
         </div>
       </div>
 
       {/* Right: bold headline */}
       <div style={{ backgroundColor: C.surface, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '56px 48px' }}>
         <p style={{ fontFamily: C.heading, fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.blush, marginBottom: 20 }}>
-          New arrival
+          Drop 02 — Peach Club
         </p>
         <h1 style={{ fontFamily: C.heading, fontSize: 'clamp(2.2rem, 4.5vw, 4rem)', fontWeight: 900, color: C.ink, lineHeight: 1.06, margin: 0, marginBottom: 20, letterSpacing: '-0.02em' }}>
-          Made for<br />movement,<br />selfies<br />& soft chaos.
+          LA energy,<br />even when<br />you're not in LA.
         </h1>
         <p style={{ fontFamily: C.body, fontSize: '0.95rem', color: C.muted, lineHeight: 1.65, marginBottom: 36, maxWidth: 340 }}>
-          Sporty essentials and everyday accessories with a California attitude.
+          Not a trend. Made for the life you're actually living.
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <button style={{ backgroundColor: C.ink, color: '#fff', border: 'none', borderRadius: 999, padding: '14px 32px', fontFamily: C.heading, fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.04em', cursor: 'pointer', transition: 'opacity 0.2s' }}
@@ -95,7 +95,7 @@ function Hero() {
 
 // ─── Marquee ─────────────────────────────────────────────────────────────────
 function Marquee() {
-  const text = ' made for movement · soft chaos · california attitude · drop 001 · new arrival · '
+  const text = ' drop 02 · peach club · LA energy · not a trend · made for your actual life · '
   return (
     <div style={{ backgroundColor: C.blush, padding: '13px 0', overflow: 'hidden' }} aria-hidden="true">
       <div className="marquee-track" style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
