@@ -44,6 +44,15 @@
   .live-blip { animation: liveblip 2.2s ease-in-out infinite; }
 }
 
+/* ── Concept A: editorial strip (3-up horizontal panel) ─────────────────── */
+.editorial-strip-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .editorial-strip-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* ── Responsive layout utilities ─────────────────────────────────────────────
    These override inline gridTemplateColumns so layouts actually stack on mobile.
    Each class is applied alongside inline styles that provide non-responsive

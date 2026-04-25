@@ -116,51 +116,92 @@ function EditorialIntro() {
   )
 }
 
-// ─── Editorial product row ─────────────────────────────────────────────────────
-function ProductRow({ product, index }: { product: typeof hoodies[0]; index: number }) {
+// ─── Editorial Feature — first product, full-bleed spread ─────────────────
+function EditorialFeature({ product }: { product: typeof hoodies[0] }) {
   const [hovered, setHovered] = useState(false)
-  const isEven = index % 2 === 0
   return (
     <div
-      style={{ gap: 0, borderTop: `1px solid ${C.rule}` }}
-      className={isEven ? 'product-row-even' : 'product-row-odd'}
+      style={{ position: 'relative', height: '85vh', minHeight: 560, overflow: 'hidden', borderTop: `1px solid ${C.rule}` }}
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
     >
-      <div style={{ order: isEven ? 0 : 1, overflow: 'hidden', position: 'relative' }}
-        onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <img src={product.img} alt={product.name}
-          style={{ width: '100%', height: '100%', minHeight: 460, objectFit: 'cover', objectPosition: 'center top', transform: hovered ? 'scale(1.04)' : 'scale(1)', transition: 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)' }} />
-        {hovered && (
-          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', padding: 24, background: 'linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 50%)' }}>
-            <span style={{ fontFamily: C.body, fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#fff', backgroundColor: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: 2, padding: '10px 22px' }}>Quick View</span>
-          </div>
-        )}
+      <img
+        src={product.img} alt={product.name}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', transform: hovered ? 'scale(1.03)' : 'scale(1)', transition: 'transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)' }}
+      />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(20,16,12,0.64) 0%, rgba(20,16,12,0.12) 48%, transparent 72%)' }} aria-hidden="true" />
+
+      {/* Issue marker */}
+      <div style={{ position: 'absolute', top: 36, right: 44 }} aria-hidden="true">
+        <p style={{ fontFamily: C.heading, fontStyle: 'italic', fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', margin: 0 }}>No. 01</p>
       </div>
-      <div style={{ order: isEven ? 1 : 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '48px 56px', backgroundColor: C.bg }}>
-        <p style={{ fontFamily: C.body, fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginBottom: 16 }}>
-          {product.category === 'hoodie' ? 'Hoodies' : 'Bags'}
+
+      {/* Bottom-left editorial caption */}
+      <div style={{ position: 'absolute', bottom: 56, left: 44, maxWidth: 520 }}>
+        <p style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,248,240,0.5)', marginBottom: 16 }}>
+          Hoodies — Drop 01
         </p>
-        <h3 style={{ fontFamily: C.heading, fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 400, fontStyle: 'italic', color: C.ink, margin: 0, marginBottom: 14, lineHeight: 1.1 }}>
+        <h3 style={{ fontFamily: C.heading, fontSize: 'clamp(2.8rem, 5.5vw, 5.2rem)', fontWeight: 400, fontStyle: 'italic', color: '#F8F5F0', margin: 0, marginBottom: 14, lineHeight: 1.04 }}>
           {product.name}
         </h3>
-        <p style={{ fontFamily: C.body, fontSize: '0.88rem', color: C.muted, margin: 0, marginBottom: 28, lineHeight: 1.6 }}>
+        <p style={{ fontFamily: C.body, fontSize: '0.84rem', color: 'rgba(255,248,240,0.55)', margin: 0, marginBottom: 28, lineHeight: 1.5 }}>
           {product.descriptor}
         </p>
-        {product.colors && (
-          <div style={{ display: 'flex', gap: 8, marginBottom: 32 }}>
-            {product.colors.map(c => (
-              <span key={c} title={c} style={{ width: 16, height: 16, borderRadius: '50%', backgroundColor: c, border: '1.5px solid rgba(0,0,0,0.1)', display: 'inline-block' }} />
-            ))}
-          </div>
-        )}
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-          <span style={{ fontFamily: C.heading, fontSize: '1.5rem', fontWeight: 400, color: C.ink }}>${product.price}</span>
-          <button style={{ fontFamily: C.body, fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: C.ink, background: 'none', border: `1px solid ${C.ink}`, borderRadius: 2, padding: '11px 24px', cursor: 'pointer', transition: 'all 0.2s' }}
-            onMouseEnter={e => { e.currentTarget.style.backgroundColor = C.ink; e.currentTarget.style.color = C.bg }}
-            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = C.ink }}>
+          <span style={{ fontFamily: C.heading, fontStyle: 'italic', fontSize: '1.5rem', fontWeight: 400, color: 'rgba(255,248,240,0.88)' }}>${product.price}</span>
+          <button
+            style={{ background: 'none', border: '1px solid rgba(248,245,240,0.4)', color: '#F8F5F0', fontFamily: C.body, fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', padding: '10px 22px', cursor: 'pointer', borderRadius: 2, transition: 'all 0.2s' }}
+            onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'rgba(248,245,240,0.14)'; e.currentTarget.style.borderColor = 'rgba(248,245,240,0.8)' }}
+            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = 'rgba(248,245,240,0.4)' }}
+          >
             Add to bag
           </button>
         </div>
       </div>
+    </div>
+  )
+}
+
+// ─── Editorial Strip — 3-up horizontal panel, vertical dividers ────────────
+function EditorialStrip({ products }: { products: typeof hoodies }) {
+  const [hovered, setHovered] = useState<string | null>(null)
+  return (
+    <div style={{ borderTop: `1px solid ${C.rule}`, backgroundColor: C.bg }} className="editorial-strip-grid">
+      {products.map((p, i) => (
+        <div
+          key={p.id}
+          style={{ borderRight: i < products.length - 1 ? `1px solid ${C.rule}` : 'none', cursor: 'pointer' }}
+          onMouseEnter={() => setHovered(p.id)} onMouseLeave={() => setHovered(null)}
+        >
+          <div style={{ overflow: 'hidden', position: 'relative' }}>
+            <img
+              src={p.img} alt={p.name}
+              style={{ width: '100%', aspectRatio: '2/3', objectFit: 'cover', objectPosition: 'center top', display: 'block', transform: hovered === p.id ? 'scale(1.04)' : 'scale(1)', transition: 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)' }}
+            />
+            {hovered === p.id && (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-end', padding: 20, background: 'linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 52%)' }}>
+                <span style={{ fontFamily: C.body, fontSize: '0.65rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#fff', backgroundColor: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.28)', borderRadius: 2, padding: '8px 18px' }}>Quick View</span>
+              </div>
+            )}
+          </div>
+          <div style={{ padding: '20px 28px 30px', borderTop: `1px solid ${C.rule}` }}>
+            <p style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.muted, marginBottom: 10 }}>
+              No. {String(i + 2).padStart(2, '0')}
+            </p>
+            <h3 style={{ fontFamily: C.heading, fontSize: '1.3rem', fontWeight: 400, fontStyle: 'italic', color: C.ink, margin: 0, marginBottom: 6, lineHeight: 1.18 }}>
+              {p.name}
+            </h3>
+            <p style={{ fontFamily: C.body, fontSize: '0.72rem', color: C.muted, margin: 0, marginBottom: 16 }}>{p.descriptor}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontFamily: C.heading, fontSize: '1.1rem', fontWeight: 400, fontStyle: 'italic', color: C.ink }}>${p.price}</span>
+              {p.colors && (
+                <div style={{ display: 'flex', gap: 6 }}>
+                  {p.colors.map(c => <span key={c} style={{ width: 11, height: 11, borderRadius: '50%', backgroundColor: c, border: '1.5px solid rgba(0,0,0,0.1)', display: 'inline-block' }} />)}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
@@ -255,7 +296,8 @@ export default function ConceptMalibu() {
         <Hero />
         <EditorialIntro />
         <section id="shop" aria-label="Hoodies collection" style={{ backgroundColor: C.bg }}>
-          {hoodies.slice(0, 4).map((p, i) => <ProductRow key={p.id} product={p} index={i} />)}
+          <EditorialFeature product={hoodies[0]} />
+          <EditorialStrip products={hoodies.slice(1, 4)} />
         </section>
         <ImageBreak />
         <AccessoriesGrid />

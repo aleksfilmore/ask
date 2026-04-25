@@ -107,53 +107,63 @@ function OpeningStatement() {
   )
 }
 
-// ─── Single product row ────────────────────────────────────────────────────────
-function ProductRow({ product, reverse = false }: { product: typeof hoodies[0]; reverse?: boolean }) {
+// ─── Product Chapter — centered catalogue pages ────────────────────────────
+function ProductChapter({ product, chapterNum }: { product: typeof hoodies[0]; chapterNum: number }) {
+  const roman = ['I', 'II', 'III']
   const [hovered, setHovered] = useState(false)
+  const isAlt = chapterNum % 2 !== 0
   return (
     <div>
       <Rule />
-      <div style={{}} className={reverse ? 'luxury-row-reverse' : 'luxury-row-normal'}>
-        {/* Image */}
-        <div style={{ order: reverse ? 1 : 0, overflow: 'hidden', backgroundColor: C.warm, position: 'relative' }}
-          onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-          <img src={product.img} alt={product.name}
-            style={{ width: '100%', height: '100%', minHeight: 440, objectFit: product.category === 'hoodie' && !product.img.includes('webp') ? 'cover' : 'cover', objectPosition: 'center top', transform: hovered ? 'scale(1.03)' : 'scale(1)', transition: 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)' }} />
-          {hovered && (
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-end', padding: 32, background: 'linear-gradient(to top, rgba(0,0,0,0.12) 0%, transparent 40%)' }}>
-              <button style={{ fontFamily: C.body, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.ink, backgroundColor: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(6px)', border: 'none', padding: '9px 22px', cursor: 'pointer', fontWeight: 400 }}>Quick view</button>
-            </div>
-          )}
+      <div
+        style={{ padding: '88px 48px 96px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', backgroundColor: isAlt ? C.warm : C.bg }}
+      >
+        {/* Roman numeral chapter marker */}
+        <span style={{ fontFamily: C.heading, fontSize: '3.2rem', fontWeight: 300, color: C.accent, lineHeight: 1, marginBottom: 40, display: 'block', letterSpacing: '0.06em' }}>
+          {roman[chapterNum]}
+        </span>
+
+        {/* Category label */}
+        <p style={{ fontFamily: C.body, fontSize: '0.58rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: C.muted, marginBottom: 36, fontWeight: 300 }}>
+          Hoodies — No. {String(chapterNum + 1).padStart(2, '0')}
+        </p>
+
+        {/* Product image — constrained, precious */}
+        <div
+          style={{ width: '100%', maxWidth: 420, overflow: 'hidden', marginBottom: 44 }}
+          onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        >
+          <img
+            src={product.img} alt={product.name}
+            style={{ width: '100%', aspectRatio: '4/5', objectFit: 'cover', objectPosition: 'center top', display: 'block', transform: hovered ? 'scale(1.03)' : 'scale(1)', transition: 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)' }}
+          />
         </div>
 
-        {/* Text */}
-        <div style={{ order: reverse ? 0 : 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '56px 64px', backgroundColor: C.bg }}>
-          <p style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: C.muted, marginBottom: 20, fontWeight: 300 }}>
-            {product.category === 'hoodie' ? 'Hoodies' : 'Accessories'} — No. {String(hoodies.indexOf(product) + 1).padStart(2, '0')}
-          </p>
-          <h3 style={{ fontFamily: C.heading, fontSize: 'clamp(2rem, 3vw, 3rem)', fontWeight: 300, color: C.ink, margin: 0, marginBottom: 16, letterSpacing: '0.02em', lineHeight: 1.15 }}>
-            {product.name}
-          </h3>
-          <p style={{ fontFamily: C.body, fontSize: '0.82rem', color: C.muted, margin: 0, marginBottom: 32, lineHeight: 1.7, fontWeight: 300 }}>
-            {product.descriptor}
-          </p>
+        {/* Product name */}
+        <h3 style={{ fontFamily: C.heading, fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, color: C.ink, margin: 0, marginBottom: 12, letterSpacing: '0.04em', lineHeight: 1.2 }}>
+          {product.name}
+        </h3>
+        <p style={{ fontFamily: C.body, fontSize: '0.8rem', color: C.muted, margin: 0, marginBottom: 32, fontWeight: 300, maxWidth: 300, lineHeight: 1.75 }}>
+          {product.descriptor}
+        </p>
 
-          {product.colors && product.colors.length > 0 && (
-            <div style={{ display: 'flex', gap: 10, marginBottom: 32, alignItems: 'center' }}>
-              <span style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.muted, fontWeight: 300, marginRight: 4 }}>Available in</span>
-              {product.colors.map(col => (
-                <span key={col} title={col} style={{ width: 14, height: 14, borderRadius: '50%', backgroundColor: col, border: '1px solid rgba(0,0,0,0.08)', display: 'inline-block' }} />
-              ))}
-            </div>
-          )}
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-            <span style={{ fontFamily: C.heading, fontSize: '1.6rem', fontWeight: 300, color: C.ink, letterSpacing: '0.02em' }}>${product.price}</span>
-            <button style={{ fontFamily: C.body, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.ink, background: 'none', border: 'none', padding: 0, cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: 4, fontWeight: 400, transition: 'opacity 0.2s' }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '0.45')} onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
-              Add to bag
-            </button>
+        {product.colors && product.colors.length > 0 && (
+          <div style={{ display: 'flex', gap: 10, marginBottom: 36, justifyContent: 'center', alignItems: 'center' }}>
+            <span style={{ fontFamily: C.body, fontSize: '0.56rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, fontWeight: 300, marginRight: 6 }}>colours</span>
+            {product.colors.map(col => (
+              <span key={col} title={col} style={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: col, border: '1px solid rgba(0,0,0,0.08)', display: 'inline-block' }} />
+            ))}
           </div>
+        )}
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+          <span style={{ fontFamily: C.heading, fontSize: '1.6rem', fontWeight: 300, color: C.ink, letterSpacing: '0.02em' }}>${product.price}</span>
+          <button
+            style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: C.ink, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: 4, fontWeight: 400, transition: 'opacity 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.opacity = '0.38')} onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+          >
+            Add to bag
+          </button>
         </div>
       </div>
     </div>
@@ -254,7 +264,7 @@ export default function ConceptSoftLuxury() {
       <main>
         <Hero />
         <OpeningStatement />
-        {hoodies.slice(0, 3).map((p, i) => <ProductRow key={p.id} product={p} reverse={i % 2 !== 0} />)}
+        {hoodies.slice(0, 3).map((p, i) => <ProductChapter key={p.id} product={p} chapterNum={i} />)}
         <BrandImage />
         <AccessoriesRow />
         <Newsletter />
