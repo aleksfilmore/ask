@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+
+  .animate-fill-both { animation-fill-mode: both; }
+
+  /* Concept A gradients */
+  .gradient-malibu-hero {
+    background: linear-gradient(135deg, #FFF8F0 0%, #F7E4A0 30%, #F4A98A 65%, #C8DFF0 100%);
+  }
+  .gradient-malibu-card-1 {
+    background: linear-gradient(160deg, #F4A98A 0%, #FFF8F0 60%, #E8D5B7 100%);
+  }
+  .gradient-malibu-card-2 {
+    background: linear-gradient(145deg, #F7E4A0 0%, #F4A98A 50%, #FFF8F0 100%);
+  }
+  .gradient-malibu-card-3 {
+    background: linear-gradient(135deg, #C8DFF0 0%, #FFF8F0 50%, #F4A98A 100%);
+  }
+  .gradient-malibu-card-4 {
+    background: linear-gradient(160deg, #E8D5B7 0%, #F7E4A0 60%, #FFF8F0 100%);
+  }
+  .gradient-malibu-mood {
+    background: linear-gradient(120deg, #F7E4A0 0%, #F4A98A 40%, #E8D5B7 80%, #C8DFF0 100%);
+  }
+
+  /* Concept B gradients */
+  .gradient-sporty-hero {
+    background: linear-gradient(135deg, #ffffff 0%, #FFB3D1 35%, #FFB899 65%, #87CEEB 100%);
+  }
+  .gradient-sporty-card-1 {
+    background: linear-gradient(150deg, #FFB899 0%, #ffffff 55%, #FFB3D1 100%);
+  }
+  .gradient-sporty-card-2 {
+    background: linear-gradient(140deg, #FFB3D1 0%, #ffffff 50%, #87CEEB 100%);
+  }
+  .gradient-sporty-card-3 {
+    background: linear-gradient(145deg, #87CEEB 0%, #ffffff 55%, #FFB899 100%);
+  }
+  .gradient-sporty-card-4 {
+    background: linear-gradient(155deg, #FFB3D1 0%, #FFB899 50%, #ffffff 100%);
+  }
+  .gradient-sporty-tile-1 {
+    background: linear-gradient(135deg, #FFB3D1 0%, #FFB899 100%);
+  }
+  .gradient-sporty-tile-2 {
+    background: linear-gradient(135deg, #87CEEB 0%, #FFB3D1 100%);
+  }
+  .gradient-sporty-tile-3 {
+    background: linear-gradient(135deg, #FFB899 0%, #87CEEB 100%);
+  }
+  .gradient-sporty-tile-4 {
+    background: linear-gradient(135deg, #FFB3D1 20%, #C0C0C0 100%);
+  }
+
+  /* Concept C gradients */
+  .gradient-luxury-hero {
+    background: linear-gradient(135deg, #FAFAF8 0%, #F5F0E8 40%, #DEB5A0 75%, #E8D5B7 100%);
+  }
+  .gradient-luxury-card-1 {
+    background: linear-gradient(160deg, #DEB5A0 0%, #FAFAF8 55%, #F5F0E8 100%);
+  }
+  .gradient-luxury-card-2 {
+    background: linear-gradient(145deg, #F5F0E8 0%, #DEB5A0 50%, #FAFAF8 100%);
+  }
+  .gradient-luxury-card-3 {
+    background: linear-gradient(140deg, #E8D5B7 0%, #FAFAF8 60%, #DEB5A0 100%);
+  }
+  .gradient-luxury-card-4 {
+    background: linear-gradient(155deg, #FAFAF8 0%, #E8D5B7 50%, #DEB5A0 100%);
+  }
+
+  /* Quick view overlay */
+  .quick-view-overlay {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .product-card-wrapper:hover .quick-view-overlay {
+    opacity: 1;
+  }
+  .product-image-wrapper {
+    overflow: hidden;
+  }
+  .product-image-inner {
+    transition: transform 0.5s ease;
+  }
+  .product-card-wrapper:hover .product-image-inner {
+    transform: scale(1.04);
+  }
+}
