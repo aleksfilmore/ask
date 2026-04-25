@@ -40,3 +40,125 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
+
+/* ── Responsive layout utilities ─────────────────────────────────────────────
+   These override inline gridTemplateColumns so layouts actually stack on mobile.
+   Each class is applied alongside inline styles that provide non-responsive
+   properties (gap, maxWidth, margin, etc).
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Home: 3-column concept comparison cards */
+.concept-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .concept-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .concept-cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Malibu / shared: 2-col about/intro section */
+.editorial-about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .editorial-about-grid {
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+  }
+}
+
+/* SoftLuxury: 2-col opening statement */
+.intro-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .intro-2col {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+}
+
+/* Malibu: alternating product rows */
+.product-row-even,
+.product-row-odd {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.product-row-even > *,
+.product-row-odd > * {
+  /* Always show image before text on mobile */
+  order: unset;
+}
+@media (max-width: 767px) {
+  .product-row-even > :last-child,
+  .product-row-odd > :last-child { order: 1; }
+  .product-row-even > :first-child,
+  .product-row-odd > :first-child { order: 0; }
+}
+@media (min-width: 768px) {
+  .product-row-even { grid-template-columns: 1.1fr 0.9fr; min-height: 520px; }
+  .product-row-odd  { grid-template-columns: 0.9fr 1.1fr; min-height: 520px; }
+}
+
+/* SoftLuxury: luxury editorial product rows */
+.luxury-row-normal,
+.luxury-row-reverse {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .luxury-row-normal  { grid-template-columns: 1.4fr 1fr; min-height: 540px; }
+  .luxury-row-reverse { grid-template-columns: 1fr 1.4fr; min-height: 540px; }
+}
+
+/* LASporty: split hero */
+.hero-split-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: auto;
+}
+@media (min-width: 768px) {
+  .hero-split-2col {
+    grid-template-columns: 1fr 1fr;
+    min-height: 92vh;
+  }
+}
+
+/* LASporty: asymmetric 3-up product grid */
+.product-grid-async {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .product-grid-async { grid-template-columns: 1.3fr 1fr 1fr; }
+}
+
+/* Shared: 3-column product / accessories grid */
+.product-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .product-grid-3col { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+}
+
+/* SoftLuxury: 4-column accessories */
+.product-grid-4col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (min-width: 768px) {
+  .product-grid-4col { grid-template-columns: repeat(4, 1fr); gap: 32px; }
+}

@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ConceptSwitcher from '../components/ConceptSwitcher'
 import AskLogo from '../components/AskLogo'
-import { images, products, hoodies, bags, navLinks } from '../brand'
+import { images, hoodies, bags, navLinks } from '../brand'
 
 const C = {
   bg: '#FEFEFE',
@@ -57,7 +57,7 @@ function Header() {
 // ─── Split Hero ───────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '92vh' }} className="flex flex-col md:grid" aria-label="Hero">
+    <section style={{}} className="hero-split-2col" aria-label="Hero">
       {/* Left: stacked photos */}
       <div style={{ position: 'relative', overflow: 'hidden', minHeight: 480 }}>
         <img src={images.rooftopPastels} alt="Women in pastel hoodies on LA rooftop" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
@@ -122,7 +122,7 @@ function ProductGrid() {
         </div>
 
         {/* First row: 1 big + 2 small */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr 1fr', gap: 16, marginBottom: 16 }} className="grid-cols-1 md:grid-cols-3">
+        <div style={{ gap: 16, marginBottom: 16 }} className="product-grid-async">
           {/* Big card */}
           <div className="product-card" style={{ cursor: 'pointer', gridRow: '1 / 2', overflow: 'hidden', borderRadius: 20, backgroundColor: '#F5EEF0' }}
             onMouseEnter={() => setHovered(featured.id)} onMouseLeave={() => setHovered(null)}>
@@ -208,7 +208,7 @@ function BagsSection() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 36 }}>
           <h2 style={{ fontFamily: C.heading, fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 900, color: C.ink, margin: 0, letterSpacing: '-0.02em' }}>Carry everything</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }} className="grid-cols-2 md:grid-cols-3">
+        <div style={{ gap: 16 }} className="product-grid-3col">
           {bags.slice(0, 6).map(p => (
             <div key={p.id} className="product-card" style={{ cursor: 'pointer', borderRadius: 20, overflow: 'hidden', backgroundColor: C.surface }}
               onMouseEnter={() => setHovered(p.id)} onMouseLeave={() => setHovered(null)}>

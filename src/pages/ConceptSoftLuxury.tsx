@@ -85,7 +85,7 @@ function Hero() {
 function OpeningStatement() {
   return (
     <section style={{ backgroundColor: C.bg, padding: '80px 48px 64px' }}>
-      <div style={{ maxWidth: 1400, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }} className="grid-cols-1 md:grid-cols-2">
+      <div style={{ maxWidth: 1400, margin: '0 auto' }} className="intro-2col">
         <div style={{ paddingTop: 8 }}>
           <p style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: C.muted, marginBottom: 20, fontWeight: 300 }}>About</p>
           <p style={{ fontFamily: C.heading, fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 300, color: C.ink, lineHeight: 1.5, margin: 0, letterSpacing: '0.02em' }}>
@@ -111,7 +111,7 @@ function ProductRow({ product, reverse = false }: { product: typeof hoodies[0]; 
   return (
     <div>
       <Rule />
-      <div style={{ display: 'grid', gridTemplateColumns: reverse ? '1fr 1.4fr' : '1.4fr 1fr', minHeight: 540 }} className="grid-cols-1 md:grid-cols-2">
+      <div style={{}} className={reverse ? 'luxury-row-reverse' : 'luxury-row-normal'}>
         {/* Image */}
         <div style={{ order: reverse ? 1 : 0, overflow: 'hidden', backgroundColor: C.warm, position: 'relative' }}
           onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
@@ -178,7 +178,7 @@ function AccessoriesRow() {
           <h2 style={{ fontFamily: C.heading, fontSize: 'clamp(1.8rem, 2.5vw, 2.6rem)', fontWeight: 300, color: C.ink, margin: 0, letterSpacing: '0.02em' }}>Accessories</h2>
           <button style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.muted, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: 3, fontWeight: 300 }}>View all</button>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32 }} className="grid-cols-2 md:grid-cols-4">
+        <div style={{}} className="product-grid-4col">
           {items.map(p => (
             <article key={p.id} style={{ cursor: 'pointer' }}>
               <div style={{ backgroundColor: C.warm, marginBottom: 20, overflow: 'hidden' }}>

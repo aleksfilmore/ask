@@ -175,3 +175,77 @@ export const navLinks = [
 ]
 
 export type ConceptId = 'malibu' | 'sporty' | 'luxury'
+
+// ─── Proposal cards ───────────────────────────────────────────────────────────
+// Centralised metadata for the 3 design proposals.
+// Consumed by Home.tsx (comparison grid) and ConceptSwitcher.
+
+export interface ProposalCard {
+  id: ConceptId
+  /** Single uppercase letter identifier: A, B, or C */
+  label: string
+  route: string
+  name: string
+  tagline: string
+  img: string
+  imgAlt: string
+  /** Accent / highlight colour */
+  accent: string
+  headingFont: string
+  headingWeight: number
+  headingStyle?: 'italic'
+  cta: string
+  /** Page background colour */
+  bg: string
+  /** Primary text colour */
+  text: string
+}
+
+export const proposalCards: ProposalCard[] = [
+  {
+    id: 'malibu',
+    label: 'A',
+    route: '/concept-malibu',
+    name: 'Malibu Magazine',
+    tagline: 'Editorial. Warm ivory. Italic serif. Photography-first.',
+    img: images.rooftopSunset,
+    imgAlt: 'Women in earth-tone hoodies at golden-hour LA rooftop',
+    accent: '#C4A882',
+    headingFont: '"Playfair Display", Georgia, serif',
+    headingWeight: 400,
+    headingStyle: 'italic',
+    cta: 'Shop the first drop',
+    bg: '#F8F6F2',
+    text: '#1C1714',
+  },
+  {
+    id: 'sporty',
+    label: 'B',
+    route: '/concept-la-sporty',
+    name: 'LA Sporty Angel',
+    tagline: 'Bold. Split layout. Blush accents. Social-native energy.',
+    img: images.rooftopPastels,
+    imgAlt: 'Women in pastel hoodies on LA rooftop, energetic',
+    accent: '#E8B4B8',
+    headingFont: 'Nunito, sans-serif',
+    headingWeight: 900,
+    cta: 'Explore the drop',
+    bg: '#FEFEFE',
+    text: '#1A1A1A',
+  },
+  {
+    id: 'luxury',
+    label: 'C',
+    route: '/concept-soft-luxury',
+    name: 'Soft Luxury',
+    tagline: 'Quiet. Pure white. One product per row. Maximum space.',
+    img: images.studioSets,
+    imgAlt: 'Women in earth-tone matching sets, LA studio',
+    accent: '#C8B89A',
+    headingFont: '"Cormorant Garamond", Georgia, serif',
+    headingWeight: 300,
+    cta: 'View collection',
+    bg: '#FFFFFF',
+    text: '#111111',
+  },
+]

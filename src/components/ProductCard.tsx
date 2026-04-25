@@ -19,8 +19,6 @@ export default function ProductCard({
   textColor = '#3A2E28',
   surfaceColor = '#FEFBF6',
 }: ProductCardProps) {
-  const gradClass = product.gradientClass[concept]
-
   return (
     <article
       className="product-card-wrapper"
@@ -36,12 +34,13 @@ export default function ProductCard({
       aria-label={`View ${product.name} — $${product.price}`}
       onKeyDown={e => { if (e.key === 'Enter') e.currentTarget.click() }}
     >
-      {/* Image placeholder */}
-      <div className="product-image-wrapper" style={{ aspectRatio: '3/4', position: 'relative' }}>
-        <div
-          className={`product-image-inner ${gradClass}`}
-          style={{ width: '100%', height: '100%' }}
-          aria-hidden="true"
+      {/* Product image */}
+      <div className="product-image-wrapper" style={{ aspectRatio: '3/4', position: 'relative', backgroundColor: '#F0EBE4', overflow: 'hidden' }}>
+        <img
+          src={product.img}
+          alt={product.name}
+          className="img-hover"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
         />
 
         {/* Quick View overlay */}
@@ -111,18 +110,18 @@ export default function ProductCard({
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Color dots */}
           <div style={{ display: 'flex', gap: 6 }} role="list" aria-label="Available colors">
-            {product.colors.map(c => (
+            {product.colors?.map(hex => (
               <span
-                key={c.label}
+                key={hex}
                 role="listitem"
-                title={c.label}
-                aria-label={c.label}
+                title={hex}
+                aria-label={hex}
                 style={{
                   width: 14,
                   height: 14,
                   borderRadius: '50%',
-                  backgroundColor: c.hex,
-                  border: c.hex === '#FFFFFF' || c.hex === '#FFF8F0' || c.hex === '#F5F0E8' || c.hex === '#FAFAF8'
+                  backgroundColor: hex,
+                  border: hex === '#FFFFFF' || hex === '#FFF8F0' || hex === '#F5F0E8' || hex === '#FAFAF8'
                     ? '1.5px solid rgba(0,0,0,0.12)' : 'none',
                   display: 'inline-block',
                 }}

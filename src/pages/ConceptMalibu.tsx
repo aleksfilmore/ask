@@ -88,7 +88,7 @@ function Hero() {
 function EditorialIntro() {
   return (
     <section style={{ backgroundColor: C.bg, padding: '80px 32px' }}>
-      <div style={{ maxWidth: 1320, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'center' }} className="grid-cols-1 md:grid-cols-[1fr_1.6fr]">
+        <div style={{ maxWidth: 1320, margin: '0 auto' }} className="editorial-about-grid">
         <div>
           <p style={{ fontFamily: C.body, fontSize: '0.68rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: C.muted, marginBottom: 20 }}>
             About așk
@@ -114,8 +114,8 @@ function ProductRow({ product, index }: { product: typeof hoodies[0]; index: num
   const isEven = index % 2 === 0
   return (
     <div
-      style={{ display: 'grid', gridTemplateColumns: isEven ? '1.1fr 0.9fr' : '0.9fr 1.1fr', gap: 0, minHeight: 520, borderTop: `1px solid ${C.rule}` }}
-      className="grid-cols-1 md:grid-cols-2"
+      style={{ gap: 0, borderTop: `1px solid ${C.rule}` }}
+      className={isEven ? 'product-row-even' : 'product-row-odd'}
     >
       <div style={{ order: isEven ? 0 : 1, overflow: 'hidden', position: 'relative' }}
         onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
@@ -181,7 +181,7 @@ function AccessoriesGrid() {
           <h2 style={{ fontFamily: C.heading, fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontStyle: 'italic', fontWeight: 400, color: C.ink, margin: 0 }}>Bags & pouches</h2>
           <span style={{ fontFamily: C.body, fontSize: '0.68rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: C.muted }}>{items.length} pieces</span>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }} className="grid-cols-2 md:grid-cols-3">
+        <div style={{ gap: 24 }} className="product-grid-3col">
           {items.map(p => (
             <article key={p.id} className="product-card" style={{ cursor: 'pointer' }}>
               <div style={{ overflow: 'hidden', borderRadius: 2, marginBottom: 16, position: 'relative', backgroundColor: '#F0EBE4' }}>
