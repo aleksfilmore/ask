@@ -1,318 +1,259 @@
-import Header from '../components/Header'
-import Hero from '../components/Hero'
-import ProductGrid from '../components/ProductGrid'
-import MoodSection from '../components/MoodSection'
-import NewsletterSignup from '../components/NewsletterSignup'
-import Footer from '../components/Footer'
+/**
+ * Concept C — Soft Luxury
+ * Identity: Quiet luxury. Pure white. One product per row. Cormorant Light.
+ * Layout: Maximum negative space. No decorative elements. Photography and type only.
+ */
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import ConceptSwitcher from '../components/ConceptSwitcher'
-import { featuredProducts, allProducts } from '../brand'
+import AskLogo from '../components/AskLogo'
+import { images, hoodies, bags, navLinks } from '../brand'
 
-const theme = {
-  bg: '#FAFAF8',
-  surface: '#F5F0E8',
-  accent: '#DEB5A0',
-  text: '#2C2C2C',
-  textMuted: '#8A8078',
-  border: '#E8D5B7',
-  cta: '#2C2C2C',
-  ctaText: '#FAFAF8',
+const C = {
+  bg: '#FFFFFF',
+  warm: '#F8F5F1',
+  ink: '#111111',
+  muted: '#9A9088',
+  rule: '#E4DDD6',
+  accent: '#C8B89A',
   heading: '"Cormorant Garamond", Georgia, serif',
   body: 'Jost, sans-serif',
 }
 
-/* ─── Accessories highlight ─── */
-function AccessoriesHighlight() {
-  const items = [
-    {
-      name: 'Clean Girl Cap',
-      desc: 'Washed twill',
-      price: '$28',
-      gradient: 'gradient-luxury-card-4',
-    },
-    {
-      name: 'Peach Club Tote',
-      desc: 'Canvas carryall',
-      price: '$42',
-      gradient: 'gradient-luxury-card-1',
-    },
-    {
-      name: 'Mini Gym Pouch',
-      desc: 'Zip essentials',
-      price: '$32',
-      gradient: 'gradient-luxury-card-3',
-    },
-  ]
+const Rule = () => <div style={{ height: 1, backgroundColor: C.rule, width: '100%' }} aria-hidden="true" />
 
+// ─── Header ───────────────────────────────────────────────────────────────────
+function Header() {
+  const [open, setOpen] = useState(false)
   return (
-    <section
-      style={{ backgroundColor: theme.surface, padding: '80px 24px' }}
-      id="accessories"
-      aria-label="Accessories highlight"
-    >
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <div style={{ marginBottom: 56, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16 }}>
-          <div>
-            <p
-              style={{
-                fontFamily: theme.body,
-                fontSize: '0.7rem',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: theme.text,
-                opacity: 0.45,
-                margin: 0,
-                marginBottom: 8,
-              }}
-            >
-              Carry with you
-            </p>
-            <h2
-              style={{
-                fontFamily: theme.heading,
-                fontSize: '2.4rem',
-                fontWeight: 300,
-                color: theme.text,
-                margin: 0,
-                letterSpacing: '0.02em',
-              }}
-            >
-              Accessories
-            </h2>
-          </div>
-          <button
-            style={{
-              fontFamily: theme.body,
-              fontSize: '0.72rem',
-              color: theme.text,
-              opacity: 0.45,
-              background: 'none',
-              border: `1px solid ${theme.border}`,
-              borderRadius: 4,
-              padding: '10px 20px',
-              cursor: 'pointer',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.opacity = '1'
-              e.currentTarget.style.borderColor = theme.text
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.opacity = '0.45'
-              e.currentTarget.style.borderColor = theme.border
-            }}
-          >
-            View all
+    <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: `${C.bg}f8`, backdropFilter: 'blur(16px)', borderBottom: `1px solid ${C.rule}` }}>
+      <div style={{ maxWidth: 1400, margin: '0 auto', padding: '0 48px', height: 72, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Link to="/concept-soft-luxury" style={{ textDecoration: 'none' }}>
+          <AskLogo color={C.ink} size="md" fontFamily={C.heading} />
+        </Link>
+        <nav className="hidden md:flex" style={{ gap: 44 }}>
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} style={{ fontFamily: C.body, fontSize: '0.7rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: C.ink, opacity: 0.4, textDecoration: 'none', fontWeight: 300, transition: 'opacity 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '1')} onMouseLeave={e => (e.currentTarget.style.opacity = '0.4')}>{l.label}</a>
+          ))}
+        </nav>
+        <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+          <button aria-label="Bag" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.ink} strokeWidth="1.2" strokeLinecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </button>
+          <button className="md:hidden" onClick={() => setOpen(v => !v)} aria-label="Menu" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={C.ink} strokeWidth="1.2" strokeLinecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
           </button>
         </div>
+      </div>
+      {open && (
+        <div style={{ backgroundColor: C.bg, borderTop: `1px solid ${C.rule}`, padding: '28px 48px' }}>
+          {navLinks.map(l => <a key={l.label} href={l.href} onClick={() => setOpen(false)} style={{ display: 'block', fontFamily: C.body, fontSize: '0.9rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: C.ink, textDecoration: 'none', padding: '12px 0', fontWeight: 300 }}>{l.label}</a>)}
+        </div>
+      )}
+    </header>
+  )
+}
 
-        <div
-          className="grid grid-cols-1 md:grid-cols-3"
-          style={{ gap: 32 }}
-        >
-          {items.map(item => (
-            <article key={item.name} style={{ cursor: 'pointer' }}>
-              <div
-                className={item.gradient}
-                style={{
-                  borderRadius: 4,
-                  aspectRatio: '4/3',
-                  marginBottom: 20,
-                }}
-                aria-label={`${item.name} product image`}
-              />
-              <div style={{ padding: '0 2px' }}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'baseline',
-                    justifyContent: 'space-between',
-                    marginBottom: 4,
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontFamily: theme.heading,
-                      fontSize: '1.25rem',
-                      fontWeight: 400,
-                      color: theme.text,
-                      margin: 0,
-                      letterSpacing: '0.02em',
-                    }}
-                  >
-                    {item.name}
-                  </h3>
-                  <span
-                    style={{
-                      fontFamily: theme.body,
-                      fontSize: '0.88rem',
-                      color: theme.text,
-                      opacity: 0.65,
-                    }}
-                  >
-                    {item.price}
-                  </span>
-                </div>
-                <p
-                  style={{
-                    fontFamily: theme.body,
-                    fontSize: '0.78rem',
-                    color: theme.text,
-                    opacity: 0.45,
-                    margin: 0,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {item.desc}
-                </p>
-              </div>
-            </article>
-          ))}
+// ─── Hero ─────────────────────────────────────────────────────────────────────
+function Hero() {
+  return (
+    <section style={{ position: 'relative', height: '94vh', minHeight: 560, overflow: 'hidden' }} aria-label="Hero">
+      <img src={images.studioSets} alt="Women in earth-tone matching sets, LA studio" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.04) 60%, rgba(255,255,255,0.35) 100%)' }} aria-hidden="true" />
+
+      {/* Centered minimal text */}
+      <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 64, paddingLeft: 24, paddingRight: 24, textAlign: 'center' }}>
+        <p style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', marginBottom: 16, fontWeight: 300 }}>
+          Collection — Summer 2025
+        </p>
+        <h1 style={{ fontFamily: C.heading, fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 300, color: '#FFFFFF', margin: 0, letterSpacing: '0.04em', lineHeight: 1.15 }}>
+          Everyday pieces with<br />a little sun on them.
+        </h1>
+      </div>
+
+      {/* Scroll cue */}
+      <div style={{ position: 'absolute', bottom: 28, right: 44, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }} aria-hidden="true">
+        <div style={{ width: 1, height: 44, backgroundColor: 'rgba(255,255,255,0.4)' }} />
+        <span style={{ fontFamily: C.body, fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', writingMode: 'vertical-rl', fontWeight: 300 }}>Scroll</span>
+      </div>
+    </section>
+  )
+}
+
+// ─── Opening statement ────────────────────────────────────────────────────────
+function OpeningStatement() {
+  return (
+    <section style={{ backgroundColor: C.bg, padding: '80px 48px 64px' }}>
+      <div style={{ maxWidth: 1400, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }} className="grid-cols-1 md:grid-cols-2">
+        <div style={{ paddingTop: 8 }}>
+          <p style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: C.muted, marginBottom: 20, fontWeight: 300 }}>About</p>
+          <p style={{ fontFamily: C.heading, fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 300, color: C.ink, lineHeight: 1.5, margin: 0, letterSpacing: '0.02em' }}>
+            Started by a 15-year-old who couldn't find pieces soft enough, considered enough, and still worth wearing every day.
+          </p>
+        </div>
+        <div>
+          <p style={{ fontFamily: C.body, fontSize: '0.88rem', color: C.muted, lineHeight: 1.9, margin: 0, fontWeight: 300, paddingTop: 8 }}>
+            așk is a small brand with a simple idea: things you reach for without thinking. Lace-edged hoodies you can wear to the café or the couch. Sequin bags that don't try too hard. Printed pouches that make everyday feel a little more like something.
+          </p>
+          <p style={{ fontFamily: C.body, fontSize: '0.88rem', color: C.muted, lineHeight: 1.9, margin: '20px 0 0', fontWeight: 300 }}>
+            California light. Romanian heart. First collection available now.
+          </p>
         </div>
       </div>
     </section>
   )
 }
 
-/* ─── Editorial divider ─── */
-function EditorialDivider({ text }: { text: string }) {
+// ─── Single product row ────────────────────────────────────────────────────────
+function ProductRow({ product, reverse = false }: { product: typeof hoodies[0]; reverse?: boolean }) {
+  const [hovered, setHovered] = useState(false)
   return (
-    <div
-      style={{
-        padding: '0 24px',
-        maxWidth: '1280px',
-        margin: '0 auto',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 20,
-      }}
-      aria-hidden="true"
-    >
-      <div style={{ flex: 1, height: 1, backgroundColor: theme.border }} />
-      <span
-        style={{
-          fontFamily: theme.heading,
-          fontSize: '0.85rem',
-          color: theme.text,
-          opacity: 0.35,
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          whiteSpace: 'nowrap',
-          fontStyle: 'italic',
-        }}
-      >
-        {text}
-      </span>
-      <div style={{ flex: 1, height: 1, backgroundColor: theme.border }} />
+    <div>
+      <Rule />
+      <div style={{ display: 'grid', gridTemplateColumns: reverse ? '1fr 1.4fr' : '1.4fr 1fr', minHeight: 540 }} className="grid-cols-1 md:grid-cols-2">
+        {/* Image */}
+        <div style={{ order: reverse ? 1 : 0, overflow: 'hidden', backgroundColor: C.warm, position: 'relative' }}
+          onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+          <img src={product.img} alt={product.name}
+            style={{ width: '100%', height: '100%', minHeight: 440, objectFit: product.category === 'hoodie' && !product.img.includes('webp') ? 'cover' : 'cover', objectPosition: 'center top', transform: hovered ? 'scale(1.03)' : 'scale(1)', transition: 'transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)' }} />
+          {hovered && (
+            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-end', padding: 32, background: 'linear-gradient(to top, rgba(0,0,0,0.12) 0%, transparent 40%)' }}>
+              <button style={{ fontFamily: C.body, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.ink, backgroundColor: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(6px)', border: 'none', padding: '9px 22px', cursor: 'pointer', fontWeight: 400 }}>Quick view</button>
+            </div>
+          )}
+        </div>
+
+        {/* Text */}
+        <div style={{ order: reverse ? 0 : 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '56px 64px', backgroundColor: C.bg }}>
+          <p style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: C.muted, marginBottom: 20, fontWeight: 300 }}>
+            {product.category === 'hoodie' ? 'Hoodies' : 'Accessories'} — No. {String(hoodies.indexOf(product) + 1).padStart(2, '0')}
+          </p>
+          <h3 style={{ fontFamily: C.heading, fontSize: 'clamp(2rem, 3vw, 3rem)', fontWeight: 300, color: C.ink, margin: 0, marginBottom: 16, letterSpacing: '0.02em', lineHeight: 1.15 }}>
+            {product.name}
+          </h3>
+          <p style={{ fontFamily: C.body, fontSize: '0.82rem', color: C.muted, margin: 0, marginBottom: 32, lineHeight: 1.7, fontWeight: 300 }}>
+            {product.descriptor}
+          </p>
+
+          {product.colors && product.colors.length > 0 && (
+            <div style={{ display: 'flex', gap: 10, marginBottom: 32, alignItems: 'center' }}>
+              <span style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.muted, fontWeight: 300, marginRight: 4 }}>Available in</span>
+              {product.colors.map(col => (
+                <span key={col} title={col} style={{ width: 14, height: 14, borderRadius: '50%', backgroundColor: col, border: '1px solid rgba(0,0,0,0.08)', display: 'inline-block' }} />
+              ))}
+            </div>
+          )}
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
+            <span style={{ fontFamily: C.heading, fontSize: '1.6rem', fontWeight: 300, color: C.ink, letterSpacing: '0.02em' }}>${product.price}</span>
+            <button style={{ fontFamily: C.body, fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.ink, background: 'none', border: 'none', padding: 0, cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: 4, fontWeight: 400, transition: 'opacity 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '0.45')} onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+              Add to bag
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
+// ─── Brand image ──────────────────────────────────────────────────────────────
+function BrandImage() {
+  return (
+    <div style={{ height: '65vh', overflow: 'hidden', position: 'relative' }}>
+      <img src={images.laWindow} alt="Three women in muted hoodies, LA studio with palm trees" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+    </div>
+  )
+}
+
+// ─── Accessories row ──────────────────────────────────────────────────────────
+function AccessoriesRow() {
+  const items = bags.slice(0, 4)
+  return (
+    <section style={{ backgroundColor: C.bg, padding: '80px 48px' }} id="bags" aria-label="Accessories">
+      <div style={{ maxWidth: 1400, margin: '0 auto' }}>
+        <Rule />
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '40px 0' }}>
+          <h2 style={{ fontFamily: C.heading, fontSize: 'clamp(1.8rem, 2.5vw, 2.6rem)', fontWeight: 300, color: C.ink, margin: 0, letterSpacing: '0.02em' }}>Accessories</h2>
+          <button style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: C.muted, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: 3, fontWeight: 300 }}>View all</button>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32 }} className="grid-cols-2 md:grid-cols-4">
+          {items.map(p => (
+            <article key={p.id} style={{ cursor: 'pointer' }}>
+              <div style={{ backgroundColor: C.warm, marginBottom: 20, overflow: 'hidden' }}>
+                <img src={p.img} alt={p.name} className="img-hover" style={{ width: '100%', aspectRatio: '1/1', objectFit: 'contain', objectPosition: 'center', padding: 20 }} />
+              </div>
+              <h3 style={{ fontFamily: C.heading, fontSize: '1.1rem', fontWeight: 300, color: C.ink, margin: 0, marginBottom: 4, letterSpacing: '0.02em' }}>{p.name}</h3>
+              <p style={{ fontFamily: C.body, fontSize: '0.7rem', color: C.muted, margin: 0, marginBottom: 10, letterSpacing: '0.08em', fontWeight: 300, textTransform: 'uppercase' }}>{p.descriptor}</p>
+              <span style={{ fontFamily: C.heading, fontSize: '1rem', fontWeight: 300, color: C.ink }}>${p.price}</span>
+            </article>
+          ))}
+        </div>
+        <Rule />
+      </div>
+    </section>
+  )
+}
+
+// ─── Newsletter ───────────────────────────────────────────────────────────────
+function Newsletter() {
+  const [email, setEmail] = useState('')
+  const [done, setDone] = useState(false)
+  return (
+    <section style={{ backgroundColor: C.warm, padding: '100px 48px', textAlign: 'center' }} id="newsletter">
+      <div style={{ maxWidth: 440, margin: '0 auto' }}>
+        <p style={{ fontFamily: C.body, fontSize: '0.6rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: C.muted, marginBottom: 20, fontWeight: 300 }}>Correspondence</p>
+        <h2 style={{ fontFamily: C.heading, fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 300, color: C.ink, margin: 0, marginBottom: 12, letterSpacing: '0.02em' }}>Join the list.</h2>
+        <p style={{ fontFamily: C.body, fontSize: '0.82rem', color: C.muted, lineHeight: 1.75, marginBottom: 44, fontWeight: 300 }}>Receive new arrivals and quiet updates. Nothing more.</p>
+        {done ? (
+          <p style={{ fontFamily: C.heading, fontSize: '1.1rem', fontWeight: 300, color: C.ink, fontStyle: 'italic' }}>You're on the list. See you soon.</p>
+        ) : (
+          <form onSubmit={e => { e.preventDefault(); if (email) setDone(true) }} style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
+            <label htmlFor="newsletter-c" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>Email address</label>
+            <input id="newsletter-c" type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com" style={{ width: '100%', backgroundColor: 'transparent', border: 'none', borderBottom: `1px solid ${C.rule}`, padding: '12px 0', fontFamily: C.body, fontSize: '0.88rem', color: C.ink, outline: 'none', fontWeight: 300, textAlign: 'center', letterSpacing: '0.04em' }} onFocus={e => (e.currentTarget.style.borderBottomColor = C.ink)} onBlur={e => (e.currentTarget.style.borderBottomColor = C.rule)} />
+            <button type="submit" style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: C.ink, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: 4, fontWeight: 400, marginTop: 8, transition: 'opacity 0.2s' }} onMouseEnter={e => (e.currentTarget.style.opacity = '0.45')} onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+              Subscribe
+            </button>
+          </form>
+        )}
+      </div>
+    </section>
+  )
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+function Footer() {
+  return (
+    <footer style={{ backgroundColor: C.bg, borderTop: `1px solid ${C.rule}`, padding: '32px 48px' }}>
+      <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+        <AskLogo color={C.ink} size="sm" fontFamily={C.heading} />
+        <div style={{ display: 'flex', gap: 32 }}>
+          {['Shipping', 'Returns', 'Privacy'].map(l => (
+            <a key={l} href="#" style={{ fontFamily: C.body, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: C.muted, textDecoration: 'none', fontWeight: 300 }}>{l}</a>
+          ))}
+        </div>
+        <p style={{ fontFamily: C.body, fontSize: '0.62rem', color: C.muted, margin: 0, fontWeight: 300, letterSpacing: '0.08em' }}>© 2025 așk</p>
+      </div>
+    </footer>
+  )
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function ConceptSoftLuxury() {
   return (
-    <div style={{ backgroundColor: theme.bg, fontFamily: theme.body, minHeight: '100vh' }}>
+    <div style={{ backgroundColor: C.bg, fontFamily: C.body }}>
       <ConceptSwitcher />
-      <Header
-        concept="luxury"
-        bgColor={`${theme.bg}f2`}
-        textColor={theme.text}
-        borderColor={theme.border}
-        fontFamily={theme.body}
-        logoColor={theme.text}
-      />
-
+      <Header />
       <main>
-        <Hero
-          concept="luxury"
-          headline={"Everyday pieces with\na little sun on them."}
-          sub="Minimal activewear and accessories for girls who like simple things done beautifully."
-          cta="View collection"
-          headingFont={theme.heading}
-          bodyFont={theme.body}
-          textColor={theme.text}
-          accentColor={theme.accent}
-          ctaColor={theme.cta}
-          ctaTextColor={theme.ctaText}
-        />
-
-        <div style={{ padding: '64px 0 0' }}>
-          <EditorialDivider text="The collection" />
-        </div>
-
-        <ProductGrid
-          products={featuredProducts}
-          concept="luxury"
-          title="Editorial pieces"
-          subtitle="Minimal, considered, made to be worn everywhere."
-          headingFont={theme.heading}
-          bodyFont={theme.body}
-          textColor={theme.text}
-          textMutedColor={theme.textMuted}
-          surfaceColor={theme.bg}
-          bgColor={theme.bg}
-          accentColor={theme.accent}
-          columns={4}
-        />
-
-        <div style={{ padding: '0 0 64px' }}>
-          <EditorialDivider text="Accessories" />
-        </div>
-
-        <AccessoriesHighlight />
-
-        <div style={{ padding: '64px 0 0' }}>
-          <EditorialDivider text="About" />
-        </div>
-
-        <MoodSection
-          concept="luxury"
-          headingFont={theme.heading}
-          bodyFont={theme.body}
-          textColor={theme.text}
-          accentColor={theme.accent}
-          bgColor={theme.bg}
-        />
-
-        <div style={{ padding: '0 0 64px' }}>
-          <EditorialDivider text="All pieces" />
-        </div>
-
-        <ProductGrid
-          products={allProducts.slice(4)}
-          concept="luxury"
-          headingFont={theme.heading}
-          bodyFont={theme.body}
-          textColor={theme.text}
-          textMutedColor={theme.textMuted}
-          surfaceColor={theme.bg}
-          bgColor={theme.bg}
-          accentColor={theme.accent}
-          columns={4}
-        />
-
-        <NewsletterSignup
-          concept="luxury"
-          headingFont={theme.heading}
-          bodyFont={theme.body}
-          bgColor={theme.bg}
-          textColor={theme.text}
-          accentColor={theme.accent}
-          ctaColor={theme.cta}
-          ctaTextColor={theme.ctaText}
-          borderColor={theme.border}
-        />
+        <Hero />
+        <OpeningStatement />
+        {hoodies.slice(0, 3).map((p, i) => <ProductRow key={p.id} product={p} reverse={i % 2 !== 0} />)}
+        <BrandImage />
+        <AccessoriesRow />
+        <Newsletter />
       </main>
-
-      <Footer
-        concept="luxury"
-        bgColor={theme.bg}
-        textColor={theme.text}
-        borderColor={theme.border}
-        fontFamily={theme.body}
-        logoColor={theme.text}
-      />
+      <Footer />
     </div>
   )
 }

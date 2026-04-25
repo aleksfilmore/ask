@@ -1,277 +1,177 @@
-// ─── Brand data for așk ───────────────────────────────────────────────────────
+// ─── Image paths ─────────────────────────────────────────────────────────────
+// All images live in /public/images test/ (space is URL-encoded)
 
-export type ConceptId = 'malibu' | 'sporty' | 'luxury'
+const IMG = '/images%20test'
 
-export interface ColorPalette {
-  bg: string
-  surface: string
-  accent: string
-  text: string
-  textMuted: string
-  border: string
-  cta: string
-  ctaText: string
+export const images = {
+  // Lifestyle / group shots
+  rooftopSunset:   `${IMG}/Whisk_17eeb6c67aa2b9886d244fd7158e057cdr.jpeg`,  // 4 girls, earth tones, LA sunset — editorial
+  beachPortrait:   `${IMG}/Whisk_2a2222ccd2b7bb2bbd840e5526b310cadr.jpeg`,  // solo beach portrait, olive hoodie
+  rooftopPastels:  `${IMG}/Whisk_43c4ac386de911da666443579924b4e6dr.jpeg`,  // 6 girls, pastel hoodies, energy
+  beachGroup:      `${IMG}/Whisk_608f1be727cd1ddb3db48dd2b70707e0dr.jpeg`,  // large beach group
+  studioNeutral:   `${IMG}/Whisk_6122389d1ce573f99424a8ad1ac2bca4dr.jpeg`,  // 4 people studio, ash tones — luxury
+  sunsetGirls:     `${IMG}/Whisk_6774587127c64dca9614c5e815e27ca8dr.jpeg`,  // 3 laughing girls, palm trees
+  studioFive:      `${IMG}/Whisk_79d653c34028c5e91c1446a19a6f2b0ddr.jpeg`,  // 5 people studio, neutrals
+  couchLifestyle:  `${IMG}/Whisk_9880000bd0591afb95843aec7d85a46fdr.jpeg`,  // indoor couch, pastels, cozy
+  yellowBeach:     `${IMG}/Whisk_cda8aaf7ef2a6a5b7814bad21487dfa8dr.jpeg`,  // solo yellow hoodie, golden hour
+  brandMark:       `${IMG}/Whisk_d1fd52716bbb523af1d46dbeecb580cedr.jpeg`,  // logo image
+  studioSets:      `${IMG}/Whisk_f3dd2a8862cc477ad5045e5d9807deb9dr.jpeg`,  // 4 girls earth sets, editorial
+  laWindow:        `${IMG}/Whisk_7cac450568564a6bdae41a1b2b31b3ffdr.jpeg`,  // 3 girls LA studio window, muted purple/sage/cream
+
+  // Hoodie products
+  greyHoodieModel: `${IMG}/089C781B-F572-45A8-A90E-05C339870A7C.webp`,
+  blackHoodieModel:`${IMG}/IMG-8694.webp`,
+  heartHoodieFront:`${IMG}/1_591f104e-b5a5-444c-924d-506d3d67d341.webp`,
+  cafeHoodieBack:  `${IMG}/107_2x_9e59dd00-8392-4a4d-850e-de6afb7a4483.webp`,
+  berryHoodieBack: `${IMG}/25_2x_a395493b-2541-4c7b-88a0-f2835ad93d94.webp`,
+  laceFrontHoodie: `${IMG}/99_2x_058ea73e-037e-4130-8e3d-ef718b823615.webp`,
+
+  // Bags & accessories
+  pinkSequinBag:   `${IMG}/78C51CF1-5346-4C08-BD3E-1E92EDCB5719.webp`,
+  mintSequinBag:   `${IMG}/5710AB08-E1C2-43DB-9EB0-8AE92C26982F.webp`,
+  pearlTote:       `${IMG}/8F667357-11EB-4C0F-B330-1EA013CBB47C.webp`,
+  floralPouch:     `${IMG}/53D250FF-E5D3-425D-80E6-97E134D7E201.webp`,
+  parisPouch:      `${IMG}/CB29608E-ECC9-4B6A-8389-507E5FD7A35F.webp`,
+  sofiaPouch:      `${IMG}/FullSizeRender_805c742e-4986-42cd-b4a2-39ebc5c467c0.webp`,
 }
 
-export interface ConceptTheme {
-  id: ConceptId
-  name: string
-  label: string
-  tagline: string
-  heroHeadline: string
-  heroSub: string
-  heroCta: string
-  colors: ColorPalette
-  fonts: {
-    heading: string
-    body: string
-  }
-}
+// Fix typo in tote filename
+images.pearlTote = `${IMG}/8F667357-11EB-4C0F-B330-1EA013CBB74C.webp`
 
-export const concepts: ConceptTheme[] = [
-  {
-    id: 'malibu',
-    name: 'Malibu Clean Girl',
-    label: 'A — Malibu',
-    tagline: 'Bright, airy, sun-washed — premium but playful.',
-    heroHeadline: 'Soft pieces for\nsunny routines.',
-    heroSub: 'Activewear, hoodies, tees and accessories with a clean Malibu mood.',
-    heroCta: 'Shop the first drop',
-    colors: {
-      bg: '#FFF8F0',
-      surface: '#FEFBF6',
-      accent: '#F4A98A',
-      text: '#3A2E28',
-      textMuted: '#8C7B72',
-      border: '#E8D5B7',
-      cta: '#3A2E28',
-      ctaText: '#FFF8F0',
-    },
-    fonts: {
-      heading: '"Playfair Display", Georgia, serif',
-      body: 'Inter, sans-serif',
-    },
-  },
-  {
-    id: 'sporty',
-    name: 'LA Sporty Angel',
-    label: 'B — LA Sporty',
-    tagline: 'Energetic, social-media-ready, California attitude.',
-    heroHeadline: 'Made for movement,\nselfies and soft chaos.',
-    heroSub: 'Sporty essentials and everyday accessories with a California attitude.',
-    heroCta: 'Explore the drop',
-    colors: {
-      bg: '#ffffff',
-      surface: '#FFF5F8',
-      accent: '#FFB3D1',
-      text: '#1A1A2E',
-      textMuted: '#888',
-      border: '#FFD6E8',
-      cta: '#FFB899',
-      ctaText: '#1A1A2E',
-    },
-    fonts: {
-      heading: 'Nunito, sans-serif',
-      body: '"DM Sans", sans-serif',
-    },
-  },
-  {
-    id: 'luxury',
-    name: 'Soft Luxury',
-    label: 'C — Soft Luxury',
-    tagline: 'Minimal, grown-up, refined — simple things done beautifully.',
-    heroHeadline: 'Everyday pieces with\na little sun on them.',
-    heroSub: 'Minimal activewear and accessories for girls who like simple things done beautifully.',
-    heroCta: 'View collection',
-    colors: {
-      bg: '#FAFAF8',
-      surface: '#F5F0E8',
-      accent: '#DEB5A0',
-      text: '#2C2C2C',
-      textMuted: '#8A8078',
-      border: '#E8D5B7',
-      cta: '#2C2C2C',
-      ctaText: '#FAFAF8',
-    },
-    fonts: {
-      heading: '"Cormorant Garamond", Georgia, serif',
-      body: 'Jost, sans-serif',
-    },
-  },
-]
-
-// ─── Product Data ─────────────────────────────────────────────────────────────
-
-export interface ProductColor {
-  label: string
-  hex: string
-}
+// ─── Products ────────────────────────────────────────────────────────────────
 
 export interface Product {
   id: string
   name: string
   descriptor: string
   price: number
-  category: 'activewear' | 'hoodies' | 'tees' | 'accessories'
-  colors: ProductColor[]
-  gradientClass: {
-    malibu: string
-    sporty: string
-    luxury: string
-  }
-  featured?: boolean
+  category: 'hoodie' | 'bag' | 'pouch'
+  img: string
+  colors?: string[]
 }
 
 export const products: Product[] = [
   {
-    id: 'malibu-zip-hoodie',
-    name: 'Malibu Zip Hoodie',
-    descriptor: 'Soft French terry, easy zip',
+    id: 'lace-trim-hoodie',
+    name: 'Lace Trim Hoodie',
+    descriptor: 'Oversized, lace-edged hood & cuffs',
     price: 68,
-    category: 'hoodies',
-    colors: [
-      { label: 'Peach', hex: '#F4A98A' },
-      { label: 'Cream', hex: '#FFF8F0' },
-      { label: 'Sky Blue', hex: '#C8DFF0' },
-    ],
-    gradientClass: {
-      malibu: 'gradient-malibu-card-1',
-      sporty: 'gradient-sporty-card-1',
-      luxury: 'gradient-luxury-card-1',
-    },
-    featured: true,
+    category: 'hoodie',
+    img: images.greyHoodieModel,
+    colors: ['#D4D0CC', '#1A1A1A', '#F5F0E8'],
   },
   {
-    id: 'soft-hour-tee',
-    name: 'Soft Hour Tee',
-    descriptor: 'Weightless cotton, relaxed fit',
-    price: 34,
-    category: 'tees',
-    colors: [
-      { label: 'White', hex: '#FFFFFF' },
-      { label: 'Sand', hex: '#E8D5B7' },
-      { label: 'Blush', hex: '#F4A98A' },
-    ],
-    gradientClass: {
-      malibu: 'gradient-malibu-card-2',
-      sporty: 'gradient-sporty-card-2',
-      luxury: 'gradient-luxury-card-2',
-    },
-    featured: true,
+    id: 'lace-zip-hoodie',
+    name: 'Lace Zip Hoodie',
+    descriptor: 'Zip-front, delicate lace inset',
+    price: 72,
+    category: 'hoodie',
+    img: images.blackHoodieModel,
+    colors: ['#1A1A1A', '#D4D0CC'],
   },
   {
-    id: 'sunset-ribbed-set',
-    name: 'Sunset Ribbed Set',
-    descriptor: 'Matching top & leggings, ribbed',
-    price: 78,
-    category: 'activewear',
-    colors: [
-      { label: 'Peach', hex: '#F4A98A' },
-      { label: 'Warm Tan', hex: '#C9956A' },
-    ],
-    gradientClass: {
-      malibu: 'gradient-malibu-card-3',
-      sporty: 'gradient-sporty-card-3',
-      luxury: 'gradient-luxury-card-3',
-    },
-    featured: true,
+    id: 'wildflower-hoodie',
+    name: 'Wildflower Hoodie',
+    descriptor: 'Heart embroidery, lace pocket trim',
+    price: 64,
+    category: 'hoodie',
+    img: images.heartHoodieFront,
+    colors: ['#F5F0E8', '#E8D4C0'],
   },
   {
-    id: 'clean-girl-cap',
-    name: 'Clean Girl Cap',
-    descriptor: 'Washed twill, embroidered logo',
-    price: 28,
-    category: 'accessories',
-    colors: [
-      { label: 'Cream', hex: '#FFF8F0' },
-      { label: 'White', hex: '#FFFFFF' },
-      { label: 'Sage', hex: '#B8C9A3' },
-    ],
-    gradientClass: {
-      malibu: 'gradient-malibu-card-4',
-      sporty: 'gradient-sporty-card-4',
-      luxury: 'gradient-luxury-card-4',
-    },
-    featured: true,
+    id: 'cafe-hoodie',
+    name: 'Café Hoodie',
+    descriptor: 'Illustrated back print, relaxed fit',
+    price: 68,
+    category: 'hoodie',
+    img: images.cafeHoodieBack,
+    colors: ['#F5F0E8'],
   },
   {
-    id: 'peach-club-tote',
-    name: 'Peach Club Tote',
-    descriptor: 'Canvas carryall with zip pocket',
-    price: 42,
-    category: 'accessories',
-    colors: [
-      { label: 'Peach', hex: '#F4A98A' },
-      { label: 'Ivory', hex: '#F5F0E8' },
-    ],
-    gradientClass: {
-      malibu: 'gradient-malibu-card-1',
-      sporty: 'gradient-sporty-card-1',
-      luxury: 'gradient-luxury-card-1',
-    },
+    id: 'berry-rich-hoodie',
+    name: 'Berry Rich Hoodie',
+    descriptor: '"Expensive bites" blueberry print',
+    price: 68,
+    category: 'hoodie',
+    img: images.berryHoodieBack,
+    colors: ['#F5F0E8'],
   },
   {
-    id: 'la-morning-leggings',
-    name: 'LA Morning Leggings',
-    descriptor: 'High-waist, four-way stretch',
+    id: 'pink-sequin-bag',
+    name: 'Pink Sequin Bag',
+    descriptor: 'Slouchy shoulder bag + mini pouch',
     price: 58,
-    category: 'activewear',
-    colors: [
-      { label: 'Black', hex: '#1A1A1A' },
-      { label: 'Navy', hex: '#1B2A4A' },
-      { label: 'Dusty Pink', hex: '#D4A4B4' },
-    ],
-    gradientClass: {
-      malibu: 'gradient-malibu-card-2',
-      sporty: 'gradient-sporty-card-2',
-      luxury: 'gradient-luxury-card-2',
-    },
+    category: 'bag',
+    img: images.pinkSequinBag,
+    colors: ['#E8A4B0', '#8CC4B0'],
   },
   {
-    id: 'cloud-crop-top',
-    name: 'Cloud Crop Top',
-    descriptor: 'Cropped, bralette-style, buttery soft',
-    price: 24,
-    category: 'activewear',
-    colors: [
-      { label: 'White', hex: '#FFFFFF' },
-      { label: 'Sky Blue', hex: '#87CEEB' },
-      { label: 'Lilac', hex: '#C8B4D8' },
-    ],
-    gradientClass: {
-      malibu: 'gradient-malibu-card-3',
-      sporty: 'gradient-sporty-card-3',
-      luxury: 'gradient-luxury-card-3',
-    },
+    id: 'mint-sequin-bag',
+    name: 'Mint Sequin Bag',
+    descriptor: 'Slouchy shoulder bag + mini pouch',
+    price: 58,
+    category: 'bag',
+    img: images.mintSequinBag,
+    colors: ['#8CC4B0', '#E8A4B0'],
   },
   {
-    id: 'mini-gym-pouch',
-    name: 'Mini Gym Pouch',
-    descriptor: 'Zip pouch for essentials',
-    price: 32,
-    category: 'accessories',
-    colors: [
-      { label: 'Peach', hex: '#F4A98A' },
-      { label: 'White', hex: '#FFFFFF' },
-      { label: 'Silver', hex: '#C0C0C0' },
-    ],
-    gradientClass: {
-      malibu: 'gradient-malibu-card-4',
-      sporty: 'gradient-sporty-card-4',
-      luxury: 'gradient-luxury-card-4',
-    },
+    id: 'pearl-tote',
+    name: 'Pearl Tote',
+    descriptor: 'Sequin canvas tote, everyday carry',
+    price: 48,
+    category: 'bag',
+    img: images.pearlTote,
+    colors: ['#F0EBE0'],
+  },
+  {
+    id: 'garden-pouch',
+    name: 'Garden Pouch',
+    descriptor: 'Floral print, zip top',
+    price: 28,
+    category: 'pouch',
+    img: images.floralPouch,
+    colors: ['#FFFFFF'],
+  },
+  {
+    id: 'paris-pouch',
+    name: 'Paris Edit Pouch',
+    descriptor: 'Paris-themed print, cube zip',
+    price: 28,
+    category: 'pouch',
+    img: images.parisPouch,
+    colors: ['#FFFFFF'],
+  },
+  {
+    id: 'archive-pouch',
+    name: 'Archive Pouch',
+    descriptor: 'Sofia Coppola Archive print',
+    price: 28,
+    category: 'pouch',
+    img: images.sofiaPouch,
+    colors: ['#FFFFFF'],
+  },
+  {
+    id: 'lace-front-hoodie',
+    name: 'Lace Front Hoodie',
+    descriptor: 'Floral crochet appliqué, lace cuffs',
+    price: 64,
+    category: 'hoodie',
+    img: images.laceFrontHoodie,
+    colors: ['#F5F0E8'],
   },
 ]
 
-export const featuredProducts = products.filter(p => p.featured)
-export const allProducts = products
+export const hoodies = products.filter(p => p.category === 'hoodie')
+export const bags = products.filter(p => p.category === 'bag' || p.category === 'pouch')
 
-// ─── Navigation ──────────────────────────────────────────────────────────────
+// ─── Nav ─────────────────────────────────────────────────────────────────────
 
 export const navLinks = [
   { label: 'Shop', href: '#shop' },
-  { label: 'Activewear', href: '#activewear' },
-  { label: 'Hoodies & Tees', href: '#hoodies' },
+  { label: 'Hoodies', href: '#hoodies' },
+  { label: 'Bags', href: '#bags' },
   { label: 'Accessories', href: '#accessories' },
   { label: 'About', href: '#about' },
 ]
+
+export type ConceptId = 'malibu' | 'sporty' | 'luxury'

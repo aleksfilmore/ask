@@ -1,266 +1,115 @@
 import { Link } from 'react-router-dom'
 import AskLogo from '../components/AskLogo'
-import { concepts } from '../brand'
+import { images } from '../brand'
 
-const conceptRoutes = {
-  malibu: '/concept-malibu',
-  sporty: '/concept-la-sporty',
-  luxury: '/concept-soft-luxury',
-}
-
-const conceptGradients = {
-  malibu: 'gradient-malibu-hero',
-  sporty: 'gradient-sporty-hero',
-  luxury: 'gradient-luxury-hero',
-}
-
-const conceptAccents = {
-  malibu: '#F4A98A',
-  sporty: '#FFB3D1',
-  luxury: '#DEB5A0',
-}
-
-const conceptHeadingFonts = {
-  malibu: '"Playfair Display", Georgia, serif',
-  sporty: 'Nunito, sans-serif',
-  luxury: '"Cormorant Garamond", Georgia, serif',
-}
+const concepts = [
+  {
+    id: 'malibu',
+    route: '/concept-malibu',
+    label: 'A',
+    name: 'Malibu Magazine',
+    tagline: 'Editorial. Warm ivory. Italic serif. Photography-first.',
+    img: images.rooftopSunset,
+    imgAlt: 'Women in earth-tone hoodies at golden-hour LA rooftop',
+    accent: '#C4A882',
+    headingFont: '"Playfair Display", Georgia, serif',
+    headingStyle: { fontStyle: 'italic' as const, fontWeight: 400 },
+    cta: 'Shop the first drop',
+    bg: '#F8F6F2',
+    text: '#1C1714',
+  },
+  {
+    id: 'sporty',
+    route: '/concept-la-sporty',
+    label: 'B',
+    name: 'LA Sporty Angel',
+    tagline: 'Bold. Split layout. Blush accents. Social-native energy.',
+    img: images.rooftopPastels,
+    imgAlt: 'Women in pastel hoodies on LA rooftop, energetic',
+    accent: '#E8B4B8',
+    headingFont: 'Nunito, sans-serif',
+    headingStyle: { fontWeight: 900 },
+    cta: 'Explore the drop',
+    bg: '#FEFEFE',
+    text: '#1A1A1A',
+  },
+  {
+    id: 'luxury',
+    route: '/concept-soft-luxury',
+    label: 'C',
+    name: 'Soft Luxury',
+    tagline: 'Quiet. Pure white. One product per row. Maximum space.',
+    img: images.studioSets,
+    imgAlt: 'Women in earth-tone matching sets, LA studio',
+    accent: '#C8B89A',
+    headingFont: '"Cormorant Garamond", Georgia, serif',
+    headingStyle: { fontWeight: 300 },
+    cta: 'View collection',
+    bg: '#FFFFFF',
+    text: '#111111',
+  },
+]
 
 export default function Home() {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        backgroundColor: '#FAFAF8',
-        fontFamily: 'Inter, sans-serif',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '40px 24px',
-      }}
-    >
+    <div style={{ minHeight: '100vh', backgroundColor: '#F5F3EF', fontFamily: 'Jost, sans-serif', padding: '48px 24px 64px' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: 64 }}>
-        <AskLogo color="#2C2C2C" size="lg" />
-        <p
-          style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '0.8rem',
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: '#2C2C2C',
-            opacity: 0.4,
-            marginTop: 12,
-            marginBottom: 0,
-          }}
-        >
+        <AskLogo color="#1C1714" size="lg" fontFamily='"Cormorant Garamond", Georgia, serif' />
+        <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.7rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9A9088', marginTop: 14, marginBottom: 0, fontWeight: 300 }}>
           Brand prototype — choose a direction
         </p>
       </div>
 
       {/* Concept cards */}
-      <div
-        className="grid grid-cols-1 md:grid-cols-3"
-        style={{ gap: 20, maxWidth: 1100, width: '100%', marginBottom: 56 }}
-      >
-        {concepts.map(concept => (
-          <Link
-            key={concept.id}
-            to={conceptRoutes[concept.id]}
-            style={{ textDecoration: 'none' }}
-            aria-label={`Preview concept ${concept.label}: ${concept.name}`}
-          >
-            <div
-              style={{
-                borderRadius: 20,
-                overflow: 'hidden',
-                cursor: 'pointer',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                boxShadow: '0 2px 20px rgba(0,0,0,0.06)',
-              }}
-              onMouseEnter={e => {
-                ;(e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'
-                ;(e.currentTarget as HTMLDivElement).style.boxShadow = '0 12px 40px rgba(0,0,0,0.12)'
-              }}
-              onMouseLeave={e => {
-                ;(e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)'
-                ;(e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)'
-              }}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, maxWidth: 1100, margin: '0 auto 52px' }} className="grid-cols-1 md:grid-cols-3">
+        {concepts.map(c => (
+          <Link key={c.id} to={c.route} style={{ textDecoration: 'none' }}>
+            <article
+              style={{ borderRadius: 16, overflow: 'hidden', backgroundColor: '#fff', boxShadow: '0 2px 16px rgba(0,0,0,0.06)', transition: 'transform 0.3s ease, box-shadow 0.3s ease', cursor: 'pointer' }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = 'translateY(-5px)'; el.style.boxShadow = '0 16px 48px rgba(0,0,0,0.12)' }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 2px 16px rgba(0,0,0,0.06)' }}
             >
-              {/* Preview gradient */}
-              <div
-                className={conceptGradients[concept.id]}
-                style={{
-                  aspectRatio: '3/4',
-                  position: 'relative',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-end',
-                  padding: 28,
-                }}
-              >
-                {/* Concept label pill */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 20,
-                    left: 20,
-                    backgroundColor: 'rgba(255,255,255,0.7)',
-                    backdropFilter: 'blur(8px)',
-                    borderRadius: 999,
-                    padding: '6px 14px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 6,
-                  }}
-                >
-                  <span
-                    style={{
-                      width: 7,
-                      height: 7,
-                      borderRadius: '50%',
-                      backgroundColor: conceptAccents[concept.id],
-                      display: 'inline-block',
-                    }}
-                    aria-hidden="true"
-                  />
-                  <span
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '0.68rem',
-                      fontWeight: 600,
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      color: '#1a1a1a',
-                    }}
-                  >
-                    {concept.label}
+              {/* Photo preview */}
+              <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
+                <img src={c.img} alt={c.imgAlt} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+                {/* subtle dark overlay for text legibility */}
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.02) 50%, transparent 100%)' }} aria-hidden="true" />
+
+                {/* Label pill */}
+                <div style={{ position: 'absolute', top: 16, left: 16, backgroundColor: 'rgba(255,255,255,0.88)', backdropFilter: 'blur(8px)', borderRadius: 999, padding: '5px 14px', display: 'flex', alignItems: 'center', gap: 7 }}>
+                  <span style={{ width: 7, height: 7, borderRadius: '50%', backgroundColor: c.accent, display: 'inline-block', flexShrink: 0 }} aria-hidden="true" />
+                  <span style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.65rem', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1a1a1a' }}>
+                    Concept {c.label}
                   </span>
                 </div>
 
-                {/* Preview wordmark */}
-                <div
-                  style={{
-                    fontFamily: conceptHeadingFonts[concept.id],
-                    fontSize: '3.5rem',
-                    fontWeight: concept.id === 'luxury' ? 300 : concept.id === 'sporty' ? 800 : 500,
-                    color: 'rgba(255,255,255,0.3)',
-                    lineHeight: 1,
-                    userSelect: 'none',
-                    fontStyle: concept.id === 'malibu' ? 'italic' : 'normal',
-                    letterSpacing: '0.08em',
-                    marginBottom: 16,
-                  }}
-                  aria-hidden="true"
-                >
-                  așk
-                </div>
-
-                {/* Hero text preview */}
-                <div
-                  style={{
-                    backgroundColor: 'rgba(255,255,255,0.65)',
-                    backdropFilter: 'blur(10px)',
-                    borderRadius: 12,
-                    padding: '14px 16px',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: conceptHeadingFonts[concept.id],
-                      fontSize: '0.95rem',
-                      fontWeight: concept.id === 'luxury' ? 400 : concept.id === 'sporty' ? 700 : 500,
-                      color: '#1a1a1a',
-                      margin: 0,
-                      marginBottom: 4,
-                      fontStyle: concept.id === 'malibu' ? 'italic' : 'normal',
-                    }}
-                  >
-                    {concept.heroHeadline.replace('\n', ' ')}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '0.72rem',
-                      color: '#1a1a1a',
-                      opacity: 0.55,
-                      margin: 0,
-                    }}
-                  >
-                    {concept.heroCta} →
+                {/* Bottom text */}
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '24px 20px 20px' }}>
+                  <h2 style={{ fontFamily: c.headingFont, fontSize: '1.55rem', color: '#fff', margin: 0, marginBottom: 6, lineHeight: 1.15, ...c.headingStyle }}>
+                    {c.name}
+                  </h2>
+                  <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.72rem', color: 'rgba(255,255,255,0.65)', margin: 0, fontWeight: 300 }}>
+                    {c.cta} →
                   </p>
                 </div>
               </div>
 
               {/* Card footer */}
-              <div
-                style={{
-                  backgroundColor: '#ffffff',
-                  padding: '18px 24px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <div>
-                  <p
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
-                      color: '#1a1a1a',
-                      margin: 0,
-                      marginBottom: 2,
-                    }}
-                  >
-                    {concept.name}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: '0.73rem',
-                      color: '#888',
-                      margin: 0,
-                    }}
-                  >
-                    {concept.tagline}
-                  </p>
-                </div>
-                <span
-                  style={{
-                    backgroundColor: conceptAccents[concept.id],
-                    borderRadius: 999,
-                    padding: '8px 16px',
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                    color: '#1a1a1a',
-                    letterSpacing: '0.06em',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  Preview →
-                </span>
+              <div style={{ padding: '16px 20px 18px', backgroundColor: '#fff' }}>
+                <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.75rem', color: '#888', margin: 0, lineHeight: 1.5, fontWeight: 300 }}>
+                  {c.tagline}
+                </p>
               </div>
-            </div>
+            </article>
           </Link>
         ))}
       </div>
 
-      {/* Bottom note */}
-      <p
-        style={{
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '0.78rem',
-          color: '#888',
-          textAlign: 'center',
-          maxWidth: 480,
-          lineHeight: 1.7,
-        }}
-      >
-        Each concept is a fully separate landing page with its own palette, typography and layout.
-        Click any card to explore it, then use the tab bar at the top to switch between concepts.
+      {/* Footnote */}
+      <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.73rem', color: '#AAA09A', textAlign: 'center', maxWidth: 420, margin: '0 auto', lineHeight: 1.75, fontWeight: 300 }}>
+        Three completely different layouts, palettes and typographic systems.<br />
+        Use the tab bar at the top of each page to switch between concepts.
       </p>
     </div>
   )

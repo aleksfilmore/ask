@@ -12,7 +12,9 @@
       "Bash(git commit -m 'fix: use npx for build to avoid .bin permission error on Vercel; add vercel.json with SPA rewrites *)",
       "Bash(git push *)",
       "Bash(git rm *)",
-      "Bash(git commit -m 'fix: add .gitignore and remove committed node_modules from repo *)"
+      "Bash(git commit -m 'fix: add .gitignore and remove committed node_modules from repo *)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\iamal\\\\OneDrive\\\\Documents\\\\GitHub\\\\ask\\\\public\" -Recurse -Force | ForEach-Object { $_.FullName })",
+      "Bash(git commit -m 'redesign: 3 genuinely distinct concepts with real photography *)"
     ]
   }
 }
