@@ -1,42 +1,66 @@
-// ─── Image paths ─────────────────────────────────────────────────────────────
-// All images live in /public/images test/ (space is URL-encoded)
+// ─── Concept image paths ──────────────────────────────────────────────────────
+// Each concept uses ONLY its assigned color folder — no cross-mixing.
 
-const IMG = '/images%20test'
+const PEACH = '/images%20test/Peach'
+const LEMON = '/images%20test/Lemon'
+const MINT  = '/images%20test/Mint'
 
-export const images = {
-  // Lifestyle / group shots
-  rooftopSunset:   `${IMG}/Whisk_17eeb6c67aa2b9886d244fd7158e057cdr.jpeg`,  // 4 girls, earth tones, LA sunset — editorial
-  beachPortrait:   `${IMG}/Whisk_2a2222ccd2b7bb2bbd840e5526b310cadr.jpeg`,  // solo beach portrait, olive hoodie
-  rooftopPastels:  `${IMG}/Whisk_43c4ac386de911da666443579924b4e6dr.jpeg`,  // 6 girls, pastel hoodies, energy
-  beachGroup:      `${IMG}/Whisk_608f1be727cd1ddb3db48dd2b70707e0dr.jpeg`,  // large beach group
-  studioNeutral:   `${IMG}/Whisk_6122389d1ce573f99424a8ad1ac2bca4dr.jpeg`,  // 4 people studio, ash tones — luxury
-  sunsetGirls:     `${IMG}/Whisk_6774587127c64dca9614c5e815e27ca8dr.jpeg`,  // 3 laughing girls, palm trees
-  studioFive:      `${IMG}/Whisk_79d653c34028c5e91c1446a19a6f2b0ddr.jpeg`,  // 5 people studio, neutrals
-  couchLifestyle:  `${IMG}/Whisk_9880000bd0591afb95843aec7d85a46fdr.jpeg`,  // indoor couch, pastels, cozy
-  yellowBeach:     `${IMG}/Whisk_cda8aaf7ef2a6a5b7814bad21487dfa8dr.jpeg`,  // solo yellow hoodie, golden hour
-  brandMark:       `${IMG}/Whisk_d1fd52716bbb523af1d46dbeecb580cedr.jpeg`,  // logo image
-  studioSets:      `${IMG}/Whisk_f3dd2a8862cc477ad5045e5d9807deb9dr.jpeg`,  // 4 girls earth sets, editorial
-  laWindow:        `${IMG}/Whisk_7cac450568564a6bdae41a1b2b31b3ffdr.jpeg`,  // 3 girls LA studio window, muted purple/sage/cream
-
-  // Hoodie products
-  greyHoodieModel: `${IMG}/089C781B-F572-45A8-A90E-05C339870A7C.webp`,
-  blackHoodieModel:`${IMG}/IMG-8694.webp`,
-  heartHoodieFront:`${IMG}/1_591f104e-b5a5-444c-924d-506d3d67d341.webp`,
-  cafeHoodieBack:  `${IMG}/107_2x_9e59dd00-8392-4a4d-850e-de6afb7a4483.webp`,
-  berryHoodieBack: `${IMG}/25_2x_a395493b-2541-4c7b-88a0-f2835ad93d94.webp`,
-  laceFrontHoodie: `${IMG}/99_2x_058ea73e-037e-4130-8e3d-ef718b823615.webp`,
-
-  // Bags & accessories
-  pinkSequinBag:   `${IMG}/78C51CF1-5346-4C08-BD3E-1E92EDCB5719.webp`,
-  mintSequinBag:   `${IMG}/5710AB08-E1C2-43DB-9EB0-8AE92C26982F.webp`,
-  pearlTote:       `${IMG}/8F667357-11EB-4C0F-B330-1EA013CBB47C.webp`,
-  floralPouch:     `${IMG}/53D250FF-E5D3-425D-80E6-97E134D7E201.webp`,
-  parisPouch:      `${IMG}/CB29608E-ECC9-4B6A-8389-507E5FD7A35F.webp`,
-  sofiaPouch:      `${IMG}/FullSizeRender_805c742e-4986-42cd-b4a2-39ebc5c467c0.webp`,
+/** Concept A — Malibu Clean Girl */
+export const peachImgs = {
+  hero:       `${PEACH}/Whisk_a6caac1b2a0660ea5694ab118ab3b451dr.jpeg`,
+  featSet:    `${PEACH}/Whisk_0939b556dab0dc5854d463cab0866fcfdr.jpeg`,
+  featSetAlt: `${PEACH}/Whisk_1cc602692c8ce2c838c4ef2144c7af82dr.jpeg`,
+  drop1:      `${PEACH}/Whisk_40e2c1eb924b4ad818c468b758776754dr.jpeg`,
+  drop2:      `${PEACH}/Whisk_41e7dbd9d0f9ff1b6c942b50bd712689dr.jpeg`,
+  drop3:      `${PEACH}/Whisk_448b887923c5351893c43211296948e5dr.jpeg`,
+  life1:      `${PEACH}/Whisk_a957116cf49c4dc882c420a9c5cdfd66dr.jpeg`,
+  life2:      `${PEACH}/Whisk_cabc663e4326dcaa3074691a93578147dr.jpeg`,
+  life3:      `${PEACH}/Whisk_2deb2b0b1a11260949747ffb6958b19ddr.jpeg`,
+  meaning:    `${PEACH}/Whisk_ea29c11a03404b6911e43580035efff8dr.jpeg`,
+  card:       `${PEACH}/Whisk_f5b9587f5febf85acfb4b3f90026e02cdr.jpeg`,
+  grid1:      `${PEACH}/Whisk_bda0c66e59686568dfa44442f7b3f94adr.jpeg`,
+  grid2:      `${PEACH}/Whisk_2f7871cdfc1e547bd7340097f83565bddr.jpeg`,
+  grid3:      `${PEACH}/Whisk_5448afe4372625fa71d46ecfa9ec89a2dr.jpeg`,
+  extra1:     `${PEACH}/Whisk_77f35499054c97c860f4f114cc36aefadr.jpeg`,
+  extra2:     `${PEACH}/Whisk_cc9710d99459c8e9c994e4bc166172ccdr.jpeg`,
 }
 
-// Fix typo in tote filename
-images.pearlTote = `${IMG}/8F667357-11EB-4C0F-B330-1EA013CBB74C.webp`
+/** Concept B — LA Sporty Angel */
+export const lemonImgs = {
+  hero:       `${LEMON}/Whisk_bfe8410cc163013891a42904c38804dcdr.jpeg`,
+  featSet:    `${LEMON}/Whisk_55311b1a62623dfb1124b8051658086ddr.jpeg`,
+  featSetAlt: `${LEMON}/Whisk_983ccd1f7075411b63140fbcef85bc33dr.jpeg`,
+  drop1:      `${LEMON}/Whisk_a5ac83216d8e6b3918a4e83b2b0e3da2dr.jpeg`,
+  drop2:      `${LEMON}/Whisk_25571d02bbde90db2154cc6a838884dadr.jpeg`,
+  drop3:      `${LEMON}/Whisk_2819430d686054abe4442aa330de2b57dr.jpeg`,
+  life1:      `${LEMON}/Whisk_55fc66a1b22cf34aaf24705d3184c9f9dr.jpeg`,
+  life2:      `${LEMON}/Whisk_f19552b06a1bf71a53345ec2e98d86e9dr.jpeg`,
+  life3:      `${LEMON}/Whisk_28596e8e919e569a719459f1a8fde021dr.jpeg`,
+  meaning:    `${LEMON}/Whisk_52d08536a51eedebcdc46c896bf60dbddr.jpeg`,
+  card:       `${LEMON}/Whisk_9a346c2911665cd93f44c3fa799a8332dr.jpeg`,
+  grid1:      `${LEMON}/Whisk_d04779ff13e642db8474ae531ce720abdr.jpeg`,
+  grid2:      `${LEMON}/Whisk_b0285d3378f53099b314a9edcfea131ddr.jpeg`,
+  grid3:      `${LEMON}/Whisk_ff80c8e7d9a85b1871b4d661744b33ecdr.jpeg`,
+  extra1:     `${LEMON}/Whisk_55fc66a1b22cf34aaf24705d3184c9f9dr (1).jpeg`,
+}
+
+/** Concept C — Soft Luxury Calm */
+export const mintImgs = {
+  hero:       `${MINT}/Whisk_ad759f8a7b603d79240463323c9c9423dr.jpeg`,
+  featSet:    `${MINT}/Whisk_1292d0047ed94dc9d4143e848a450cb0dr.jpeg`,
+  featSetAlt: `${MINT}/Whisk_6e1c7bebdc24b9fa8104938b3c3a18a3dr.jpeg`,
+  drop1:      `${MINT}/Whisk_c787a74a79ef6c4914c4a331ddce8424dr.jpeg`,
+  drop2:      `${MINT}/Whisk_73b9cc5090709c0afdd4be24d9b7befcdr.jpeg`,
+  drop3:      `${MINT}/Whisk_706f0e47ac4dafbba68481684e183612dr.jpeg`,
+  life1:      `${MINT}/Whisk_e74ad1cef649e68bdab4fde8671d8349dr.jpeg`,
+  life2:      `${MINT}/Whisk_1d87ad22eec7ecca5974589be8becdfedr.jpeg`,
+  life3:      `${MINT}/Whisk_3a9a4da70146046b2704ccb9e6cc6b64dr.jpeg`,
+  meaning:    `${MINT}/Whisk_97deaaa54391852994c40d16ced72e03dr.jpeg`,
+  card:       `${MINT}/Whisk_5c78ea925f028f4850e4605d9d23c35edr.jpeg`,
+  grid1:      `${MINT}/Whisk_dba71fec92fb97384c04fc545fb76b20dr.jpeg`,
+  grid2:      `${MINT}/Whisk_3a9a4da70146046b2704ccb9e6cc6b64dr.jpeg`,
+  grid3:      `${MINT}/Whisk_706f0e47ac4dafbba68481684e183612dr.jpeg`,
+}
 
 // ─── Products ────────────────────────────────────────────────────────────────
 
@@ -52,152 +76,64 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: 'lace-trim-hoodie',
-    name: 'Lace Trim Hoodie',
-    descriptor: 'Oversized, lace-edged hood & cuffs',
-    price: 68,
+    id: 'malibu-set-peach',
+    name: 'Malibu Set — Peach',
+    descriptor: 'Ruffle-trim bra top + high-waist biker shorts',
+    price: 88,
     category: 'hoodie',
-    img: images.greyHoodieModel,
-    colors: ['#D4D0CC', '#1A1A1A', '#F5F0E8'],
+    img: peachImgs.featSet,
+    colors: ['#E8A870', '#FAF7F2', '#8CBFA0', '#F0DC60'],
   },
   {
-    id: 'lace-zip-hoodie',
-    name: 'Lace Zip Hoodie',
-    descriptor: 'Zip-front, delicate lace inset',
-    price: 72,
+    id: 'sunset-set-lemon',
+    name: 'Sunset Set — Lemon',
+    descriptor: 'Ruffle-trim sports bra + shorts',
+    price: 88,
     category: 'hoodie',
-    img: images.blackHoodieModel,
-    colors: ['#1A1A1A', '#D4D0CC'],
+    img: lemonImgs.featSet,
+    colors: ['#F0DC60', '#F9A8C0', '#FAF7F2', '#E8A870'],
   },
   {
-    id: 'wildflower-hoodie',
-    name: 'Wildflower Hoodie',
-    descriptor: 'Heart embroidery, lace pocket trim',
-    price: 64,
+    id: 'coast-set-mint',
+    name: 'Coast Set — Mint',
+    descriptor: 'Clean-line bra top + bike shorts',
+    price: 88,
     category: 'hoodie',
-    img: images.heartHoodieFront,
-    colors: ['#F5F0E8', '#E8D4C0'],
-  },
-  {
-    id: 'cafe-hoodie',
-    name: 'Café Hoodie',
-    descriptor: 'Illustrated back print, relaxed fit',
-    price: 68,
-    category: 'hoodie',
-    img: images.cafeHoodieBack,
-    colors: ['#F5F0E8'],
-  },
-  {
-    id: 'berry-rich-hoodie',
-    name: 'Berry Rich Hoodie',
-    descriptor: '"Expensive bites" blueberry print',
-    price: 68,
-    category: 'hoodie',
-    img: images.berryHoodieBack,
-    colors: ['#F5F0E8'],
-  },
-  {
-    id: 'pink-sequin-bag',
-    name: 'Pink Sequin Bag',
-    descriptor: 'Slouchy shoulder bag + mini pouch',
-    price: 58,
-    category: 'bag',
-    img: images.pinkSequinBag,
-    colors: ['#E8A4B0', '#8CC4B0'],
-  },
-  {
-    id: 'mint-sequin-bag',
-    name: 'Mint Sequin Bag',
-    descriptor: 'Slouchy shoulder bag + mini pouch',
-    price: 58,
-    category: 'bag',
-    img: images.mintSequinBag,
-    colors: ['#8CC4B0', '#E8A4B0'],
-  },
-  {
-    id: 'pearl-tote',
-    name: 'Pearl Tote',
-    descriptor: 'Sequin canvas tote, everyday carry',
-    price: 48,
-    category: 'bag',
-    img: images.pearlTote,
-    colors: ['#F0EBE0'],
-  },
-  {
-    id: 'garden-pouch',
-    name: 'Garden Pouch',
-    descriptor: 'Floral print, zip top',
-    price: 28,
-    category: 'pouch',
-    img: images.floralPouch,
-    colors: ['#FFFFFF'],
-  },
-  {
-    id: 'paris-pouch',
-    name: 'Paris Edit Pouch',
-    descriptor: 'Paris-themed print, cube zip',
-    price: 28,
-    category: 'pouch',
-    img: images.parisPouch,
-    colors: ['#FFFFFF'],
-  },
-  {
-    id: 'archive-pouch',
-    name: 'Archive Pouch',
-    descriptor: 'Sofia Coppola Archive print',
-    price: 28,
-    category: 'pouch',
-    img: images.sofiaPouch,
-    colors: ['#FFFFFF'],
-  },
-  {
-    id: 'lace-front-hoodie',
-    name: 'Lace Front Hoodie',
-    descriptor: 'Floral crochet appliqué, lace cuffs',
-    price: 64,
-    category: 'hoodie',
-    img: images.laceFrontHoodie,
-    colors: ['#F5F0E8'],
+    img: mintImgs.featSet,
+    colors: ['#8CBFA0', '#F0EDE6', '#E8A870', '#F0DC60'],
   },
 ]
 
 export const hoodies = products.filter(p => p.category === 'hoodie')
-export const bags = products.filter(p => p.category === 'bag' || p.category === 'pouch')
+export const bags    = products.filter(p => p.category === 'bag' || p.category === 'pouch')
 
-// ─── Nav ─────────────────────────────────────────────────────────────────────
+// ─── Navigation ───────────────────────────────────────────────────────────────
 
 export const navLinks = [
-  { label: 'Shop', href: '#shop' },
-  { label: 'Hoodies', href: '#hoodies' },
-  { label: 'Bags', href: '#bags' },
+  { label: 'Sets',        href: '#sets' },
+  { label: 'Tops',        href: '#tops' },
+  { label: 'Bottoms',     href: '#bottoms' },
   { label: 'Accessories', href: '#accessories' },
-  { label: 'About', href: '#about' },
 ]
 
 export type ConceptId = 'malibu' | 'sporty' | 'luxury'
 
-// ─── Proposal cards ───────────────────────────────────────────────────────────
-// Centralised metadata for the 3 design proposals.
-// Consumed by Home.tsx (comparison grid) and ConceptSwitcher.
+// ─── Proposal cards (Home selector page) ─────────────────────────────────────
 
 export interface ProposalCard {
   id: ConceptId
-  /** Single uppercase letter identifier: A, B, or C */
   label: string
   route: string
   name: string
   tagline: string
   img: string
   imgAlt: string
-  /** Accent / highlight colour */
   accent: string
   headingFont: string
   headingWeight: number
   headingStyle?: 'italic'
   cta: string
-  /** Page background colour */
   bg: string
-  /** Primary text colour */
   text: string
 }
 
@@ -206,31 +142,31 @@ export const proposalCards: ProposalCard[] = [
     id: 'malibu',
     label: 'A',
     route: '/concept-malibu',
-    name: 'Malibu Magazine',
-    tagline: 'Editorial. Warm ivory. Italic serif. Photography-first.',
-    img: images.rooftopSunset,
-    imgAlt: 'Women in earth-tone hoodies at golden-hour LA rooftop',
-    accent: '#C4A882',
-    headingFont: '"Playfair Display", Georgia, serif',
+    name: 'Malibu Clean',
+    tagline: 'soft, sun-washed, effortless',
+    img: peachImgs.card,
+    imgAlt: 'Girl in peach activewear set on the beach',
+    accent: '#E8A870',
+    headingFont: '"Cormorant Garamond", Georgia, serif',
     headingWeight: 400,
     headingStyle: 'italic',
-    cta: 'Shop the first drop',
-    bg: '#F8F6F2',
+    cta: 'View concept',
+    bg: '#FAF7F2',
     text: '#1C1714',
   },
   {
     id: 'sporty',
     label: 'B',
     route: '/concept-la-sporty',
-    name: 'LA Sporty Angel',
-    tagline: 'Bold. Split layout. Blush accents. Social-native energy.',
-    img: images.rooftopPastels,
-    imgAlt: 'Women in pastel hoodies on LA rooftop, energetic',
-    accent: '#E8B4B8',
+    name: 'LA Sporty',
+    tagline: 'bright, energetic, in motion',
+    img: lemonImgs.card,
+    imgAlt: 'Girl in lemon activewear set, skateboarding at the beach',
+    accent: '#C8A800',
     headingFont: 'Nunito, sans-serif',
     headingWeight: 900,
-    cta: 'Explore the drop',
-    bg: '#FEFEFE',
+    cta: 'View concept',
+    bg: '#FFFEF5',
     text: '#1A1A1A',
   },
   {
@@ -238,14 +174,14 @@ export const proposalCards: ProposalCard[] = [
     label: 'C',
     route: '/concept-soft-luxury',
     name: 'Soft Luxury',
-    tagline: 'Quiet. Pure white. One product per row. Maximum space.',
-    img: images.studioSets,
-    imgAlt: 'Women in earth-tone matching sets, LA studio',
-    accent: '#C8B89A',
+    tagline: 'calm, minimal, refined',
+    img: mintImgs.card,
+    imgAlt: 'Girl in mint activewear set, pilates calm',
+    accent: '#7ABAAA',
     headingFont: '"Cormorant Garamond", Georgia, serif',
     headingWeight: 300,
-    cta: 'View collection',
-    bg: '#FFFFFF',
+    cta: 'View concept',
+    bg: '#FAFAFA',
     text: '#111111',
   },
 ]

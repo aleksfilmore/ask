@@ -174,3 +174,57 @@
 @media (min-width: 768px) {
   .product-grid-4col { grid-template-columns: repeat(4, 1fr); gap: 32px; }
 }
+
+/* ── New layout classes (v2 rebuild) ─────────────────────────────────────── */
+
+/* Home: 3-col concept selector cards */
+.home-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 640px) {
+  .home-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .home-cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Featured set: image + details 2-col */
+.feat-set-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .feat-set-grid { grid-template-columns: 1fr 1fr; min-height: 600px; }
+}
+
+/* Drop images: 3-col equal */
+.drop-3-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 640px) {
+  .drop-3-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Lifestyle mosaic: 2-col */
+.mood-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .mood-2col { grid-template-columns: 1.2fr 0.8fr; min-height: 520px; }
+}
+
+/* Brand meaning: image + editorial text */
+.brand-meaning-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .brand-meaning-2col { grid-template-columns: 1fr 1fr; gap: 72px; }
+}

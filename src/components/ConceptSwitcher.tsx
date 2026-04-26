@@ -1,9 +1,9 @@
 import { Link, useLocation } from 'react-router-dom'
 
 const CONCEPTS = [
-  { id: 'malibu',  label: 'A — Malibu Magazine',  route: '/concept-malibu',      accent: '#C4A882' },
-  { id: 'sporty',  label: 'B — LA Sporty Angel',   route: '/concept-la-sporty',   accent: '#E8B4B8' },
-  { id: 'luxury',  label: 'C — Soft Luxury',       route: '/concept-soft-luxury', accent: '#C8B89A' },
+  { id: 'malibu',  label: 'A — Malibu Clean', route: '/concept-malibu',      accent: '#E8A870' },
+  { id: 'sporty',  label: 'B — LA Sporty',     route: '/concept-la-sporty',   accent: '#F0DC5A' },
+  { id: 'luxury',  label: 'C — Soft Luxury',   route: '/concept-soft-luxury', accent: '#7ABAAA' },
 ]
 
 export default function ConceptSwitcher() {
