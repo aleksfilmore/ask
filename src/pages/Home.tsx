@@ -9,58 +9,87 @@ export default function Home() {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF8F4', fontFamily: SANS }}>
 
-      {/* ── Intro ────────────────────────────────────────────────── */}
-      <section style={{ textAlign: 'center', padding: '80px 24px 64px' }}>
-        <h1
-          style={{
-            fontFamily: SERIF,
-            fontSize: 'clamp(4.5rem, 15vw, 10rem)',
-            fontWeight: 400,
-            fontStyle: 'italic',
-            color: '#1C1714',
-            margin: 0,
-            lineHeight: 0.9,
-            letterSpacing: '-0.01em',
-          }}
-        >
-          a<span style={{ fontStyle: 'normal', fontWeight: 300 }}>ș</span>k
-        </h1>
-
+      {/* ── Opening screen ───────────────────────────────────────── */}
+      <section
+        style={{
+          minHeight: '62vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: '72px 24px 60px',
+          position: 'relative',
+        }}
+      >
+        {/* Eyebrow */}
         <p
           style={{
             fontFamily: SANS,
-            fontSize: 'clamp(0.8rem, 2vw, 0.95rem)',
+            fontSize: '0.54rem',
+            fontWeight: 400,
+            letterSpacing: '0.32em',
+            textTransform: 'uppercase',
+            color: '#C0B0A4',
+            margin: '0 0 40px',
+          }}
+        >
+          Drop 01 · Available now
+        </p>
+
+        {/* Wordmark */}
+        <h1
+          style={{
+            fontFamily: SERIF,
+            fontSize: 'clamp(5.5rem, 17vw, 12rem)',
+            fontWeight: 300,
+            fontStyle: 'italic',
+            color: '#1C1714',
+            margin: 0,
+            lineHeight: 0.88,
+            letterSpacing: '-0.02em',
+          }}
+        >
+          așk
+        </h1>
+
+        {/* Tagline */}
+        <p
+          style={{
+            fontFamily: SANS,
+            fontSize: 'clamp(0.78rem, 1.8vw, 0.9rem)',
             fontWeight: 300,
             color: '#9A8A7E',
-            letterSpacing: '0.04em',
-            marginTop: 32,
-            marginBottom: 0,
-            lineHeight: 1.9,
-            maxWidth: 420,
-            margin: '32px auto 0',
+            letterSpacing: '0.06em',
+            margin: '36px auto 0',
+            lineHeight: 2,
+            maxWidth: 380,
           }}
         >
           movement wear inspired by love, softness, and confidence
         </p>
 
+        {/* Divider + choose your mood */}
         <div
-          style={{ width: 36, height: 1, backgroundColor: '#C8B8A8', margin: '40px auto' }}
+          style={{ marginTop: 56, display: 'flex', alignItems: 'center', gap: 18 }}
           aria-hidden="true"
-        />
-
-        <p
-          style={{
-            fontFamily: SANS,
-            fontSize: '0.65rem',
-            fontWeight: 400,
-            letterSpacing: '0.24em',
-            textTransform: 'uppercase',
-            color: '#B0A090',
-            margin: 0,
-          }}
         >
-          choose your mood
-        </p>
+          <div style={{ width: 32, height: 1, backgroundColor: '#D4C4B4' }} />
+          <p
+            style={{
+              fontFamily: SANS,
+              fontSize: '0.57rem',
+              fontWeight: 400,
+              letterSpacing: '0.28em',
+              textTransform: 'uppercase',
+              color: '#B8A898',
+              margin: 0,
+            }}
+          >
+            choose your mood
+          </p>
+          <div style={{ width: 32, height: 1, backgroundColor: '#D4C4B4' }} />
+        </div>
       </section>
 
       {/* ── Concept cards ─────────────────────────────────────────── */}
@@ -212,37 +241,51 @@ function ConceptCard({ card }: { card: (typeof proposalCards)[0] }) {
         {/* Card footer */}
         <div
           style={{
-            padding: '18px 24px 22px',
+            padding: '16px 22px 20px',
             backgroundColor: '#fff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            borderTop: '1px solid rgba(0,0,0,0.045)',
           }}
         >
           <span
             style={{
-              width: 10,
-              height: 10,
+              width: 8,
+              height: 8,
               borderRadius: '50%',
               backgroundColor: card.accent,
               display: 'inline-block',
               flexShrink: 0,
+              opacity: hovered ? 1 : 0.55,
+              transition: 'opacity 0.25s',
             }}
             aria-hidden="true"
           />
           <span
             style={{
               fontFamily: SANS,
-              fontSize: '0.64rem',
+              fontSize: '0.62rem',
               fontWeight: 500,
-              letterSpacing: '0.16em',
+              letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: '#1C1714',
-              opacity: hovered ? 1 : 0.5,
-              transition: 'opacity 0.2s',
+              color: hovered ? '#1C1714' : '#7A6A60',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              transition: 'color 0.25s',
             }}
           >
-            {card.cta} →
+            {card.cta}
+            <span
+              style={{
+                display: 'inline-block',
+                transform: hovered ? 'translateX(5px)' : 'translateX(0)',
+                transition: 'transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94)',
+              }}
+            >
+              →
+            </span>
           </span>
         </div>
       </article>
